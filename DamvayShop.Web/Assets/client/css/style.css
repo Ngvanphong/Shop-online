@@ -2114,3 +2114,10 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+.imamgehome{
+    display: block;
+    height: 350px;
+    margin-bottom: 20px;
+    position: relative;
+}

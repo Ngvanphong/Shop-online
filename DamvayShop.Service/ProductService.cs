@@ -205,7 +205,7 @@ namespace DamvayShop.Service
 
         public IEnumerable<Product> GetHotProduct()
         {
-            IEnumerable<Product> listHotProduct = _productRepository.GetMulti(x => x.Status == true && x.HotFlag == true).OrderByDescending(x => x.UpdatedDate).Take(7);
+            IEnumerable<Product> listHotProduct = _productRepository.GetMulti(x => x.Status == true && x.HotFlag == true).OrderByDescending(x => x.UpdatedDate).Take(4);
                 
             return listHotProduct;
         }
