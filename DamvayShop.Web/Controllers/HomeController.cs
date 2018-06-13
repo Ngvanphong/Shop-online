@@ -80,7 +80,7 @@ namespace DamvayShop.Web.Controllers
         }
         
         [ChildActionOnly]
-        [OutputCache(Duration = 3600)]
+        //[OutputCache(Duration = 3600)]
         public ActionResult Footer()
         {
             FooterCommon footVm = new FooterCommon();
@@ -137,14 +137,12 @@ namespace DamvayShop.Web.Controllers
             {
 
             };
-            headerVm.CountShopping = countShopping;
-            
-
+            headerVm.CountShopping = countShopping;          
             return PartialView(headerVm);
         }
 
         [ChildActionOnly]
-        [OutputCache(Duration = 3600)]
+        //[OutputCache(Duration = 3600)]
         public ActionResult CategoryHeader()
         {
             CategoryHeaderViewModel categogyHeaderVm = new CategoryHeaderViewModel();

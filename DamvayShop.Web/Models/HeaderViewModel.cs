@@ -7,9 +7,7 @@ namespace DamvayShop.Web.Models
 {
     public class HeaderViewModel
     {
-    
-        public LoginViewModel LoginModel;
-
+            
         public int CountShopping;
     }
 }
