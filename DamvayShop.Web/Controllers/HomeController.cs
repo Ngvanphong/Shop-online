@@ -53,9 +53,10 @@ namespace DamvayShop.Web.Controllers
             IEnumerable<Product> listHotProductDb = _productService.GetHotProduct();
             IEnumerable<ProductViewModel> listHotProductVm = Mapper.Map<IEnumerable<ProductViewModel>>(listHotProductDb);
             indexVm.productHotVm = listHotProductVm;
-            IEnumerable<Product> listPromotionProductDb = _productService.GetPromotionProduct();
-            IEnumerable<ProductViewModel> listPromotionVm = Mapper.Map<IEnumerable<ProductViewModel>>(listPromotionProductDb);
-            indexVm.productPromotionVm = listPromotionVm;
+
+            IEnumerable<Product> listUpdateLastedDb = _productService.GetTopProductByDay();
+            IEnumerable<ProductViewModel> listUpdateLastedVm = Mapper.Map<IEnumerable<ProductViewModel>>(listUpdateLastedDb);
+            indexVm.productUpdateLastedVm = listUpdateLastedVm;
 
             IEnumerable<Slide> listSlideDb = _slideService.GetAll().Where(x=>x.Status==true);
             IEnumerable<SlideViewModel> listSlideVm = Mapper.Map<IEnumerable<SlideViewModel>>(listSlideDb);

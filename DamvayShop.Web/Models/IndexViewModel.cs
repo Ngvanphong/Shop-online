@@ -9,7 +9,7 @@ namespace DamvayShop.Web.Models
     {
        public IEnumerable<SlideViewModel> slideVm;
         public IEnumerable<ProductViewModel> productHotVm;
-        public IEnumerable<ProductViewModel> productPromotionVm;
+        public IEnumerable<ProductViewModel> productUpdateLastedVm;
         public IEnumerable<PostViewModel> postVm;
         public  string MetaKeyword;
         public  string Title;

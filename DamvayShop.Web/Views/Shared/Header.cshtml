@@ -13,11 +13,11 @@
                         @{Html.RenderAction("CategoryHeader", "Home");}
                         @if (Model.CountShopping > 0)
                         {
-                            <li><a href="cart.html"><i class="icon-shopping-cart"></i> Giỏ hàng [@Model.CountShopping]</a></li>
+                            <li><a href="/basket.html"><i class="icon-shopping-cart"></i> Giỏ hàng [@Model.CountShopping]</a></li>
                         }
                         else
                         {
-                            <li><a href="cart.html"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
+                            <li><a href="/basket.html"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
                         }
 
                     </ul>

@@ -27,6 +27,8 @@ namespace DamvayShop.Service
         IEnumerable<Product> GetHotProduct();
         IEnumerable<Product> GetAllHotProduct(int page, int pageSize, out int totalRow);
         IEnumerable<Product> GetPromotionProduct();
+        IEnumerable<Product> GetTopProductByDay();
+
         IEnumerable<Product> GetAllPromotionProduct(int page, int pageSize, out int totalRow);
 
         IEnumerable<Product> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
@@ -281,6 +283,11 @@ namespace DamvayShop.Service
                     }
                 }
             }
+        }
+
+        public IEnumerable<Product> GetTopProductByDay()
+        {
+            return _productRepository.GetAll().OrderByDescending(x => x.UpdatedDate).Take(8);
         }
     }
 }
