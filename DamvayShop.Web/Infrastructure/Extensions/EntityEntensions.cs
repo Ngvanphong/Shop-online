@@ -83,6 +83,7 @@ namespace DamvayShop.Web.Infrastructure.Extensions
             product.PromotionPrice = productVm.PromotionPrice;
             product.Warranty = productVm.Warranty;
             product.Tags = productVm.Tags;
+            product.Unit = productVm.Unit;
 
         }
         public static void UpdateProductCategory(this ProductCategory productCategory, ProductCategoryViewModel productCategoryVm)

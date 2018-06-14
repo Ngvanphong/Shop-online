@@ -49,8 +49,9 @@ namespace DamvayShop.Web.Controllers
                 PageSize=pageSize,
 
             };
-
-
+            IEnumerable<Tag> listTagProdut = _tagService.GetAll().Where(x => x.Type == Common.CommonConstant.ProductTag.ToString()).OrderByDescending(x => x.ID).Take(9);
+            IEnumerable<TagViewModel> listTagVm = Mapper.Map<IEnumerable<TagViewModel>>(listTagProdut);
+            ViewBag.TagProduct=listTagVm;
             return View(pagination);
         } 
         public JsonResult GetListProductByName(string prodcuctName)
@@ -62,27 +63,6 @@ namespace DamvayShop.Web.Controllers
             },JsonRequestBehavior.AllowGet);
                 
             
-        }
-
-        public ActionResult SearchProduct(string productName, int page = 1, string sort="")
-        {
-            int pageSize = Common.CommonConstant.PageSize;
-            int totalRow = 0;
-            ViewBag.Sort = sort;
-            ViewBag.ProductName = productName;
-            IEnumerable<Product> listProductDb = _productService.GetAllByNamePaging(productName, page, pageSize, sort, out totalRow);
-            IEnumerable<ProductViewModel> listProductVm = Mapper.Map<IEnumerable<ProductViewModel>>(listProductDb);
-            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            PaginationClient<ProductViewModel> pagination = new PaginationClient<ProductViewModel>()
-            {
-                PageDisplay=Common.CommonConstant.PageDisplay,
-                PageIndex=page,
-                PageSize=pageSize,
-                TotalPage=totalPage,
-                Items=listProductVm,
-                TotalRows=totalRow,
-            };
-            return View(pagination);
         }
 
         public ActionResult Detail(int id)
@@ -111,46 +91,7 @@ namespace DamvayShop.Web.Controllers
             return View(ProductDetail);
 
         }
-
-        public ActionResult HotProduct(int page=1)
-        {
-            int pageSize = Common.CommonConstant.PageSize;
-            int totalRow = 0;
-            IEnumerable<Product> listHotProductDb = _productService.GetAllHotProduct(page,pageSize,out totalRow);
-            IEnumerable<ProductViewModel> listHotProductVm = Mapper.Map<IEnumerable<ProductViewModel>>(listHotProductDb);
-            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            PaginationClient<ProductViewModel> paginnation = new PaginationClient<ProductViewModel>()
-            {
-                PageSize=pageSize,
-                PageDisplay=Common.CommonConstant.PageDisplay,
-                PageIndex =page,
-                TotalPage=totalPage,
-                TotalRows=totalRow,
-                Items=listHotProductVm,
-            };
-            return View(paginnation);
-
-        }
-
-        public ActionResult PromotionProduct(int page = 1)
-        {
-            int pageSize = Common.CommonConstant.PageSize;
-            int totalRow = 0;
-            IEnumerable<Product> listProductDb = _productService.GetAllPromotionProduct(page, pageSize, out totalRow);
-            IEnumerable<ProductViewModel> listProductVm = Mapper.Map<IEnumerable<ProductViewModel>>(listProductDb);
-            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            PaginationClient<ProductViewModel> pagination = new PaginationClient<ProductViewModel>()
-            {
-                PageIndex = page,
-                PageSize = pageSize,
-                PageDisplay = Common.CommonConstant.PageDisplay,
-                TotalPage = totalPage,
-                Items = listProductVm,
-                TotalRows=totalRow
-            };
-            return View(pagination);
-
-        }
+ 
         public ActionResult Tag(string tagId, int page=1)
         {
             int pageSize = Common.CommonConstant.PageSize;

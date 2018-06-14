@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201805060108371_sql2012.Designer.cs">
       <DependentUpon>201805060108371_sql2012.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806140301039_changeunit.cs" />
+    <Compile Include="Migrations\201806140301039_changeunit.Designer.cs">
+      <DependentUpon>201806140301039_changeunit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reponsitories\ErrorRepository.cs" />
@@ -110,6 +114,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805060108371_sql2012.resx">
       <DependentUpon>201805060108371_sql2012.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140301039_changeunit.resx">
+      <DependentUpon>201806140301039_changeunit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

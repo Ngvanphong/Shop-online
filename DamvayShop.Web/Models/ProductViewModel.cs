@@ -48,6 +48,8 @@ namespace DamvayShop.Web.Models
 
         public string ThumbnailImage { set; get; }
 
-       
+        public string Unit { set; get; }
+
+
     }
 }
