@@ -1,11 +1,33 @@
 ﻿
 @model DamvayShop.Web.Models.CategoryHeaderViewModel
 <li class="active"><a href="/">Trang chủ</a></li>
-
-@foreach (var item in Model.productCategoryVm)
+@foreach (var item in Model.productCategoryVm.Where(x => x.ParentID == null))
 {
-    var url = "/" + item.Alias + ".pc-" + item.ID + ".html";
-    <li><a href="@url">@item.Name</a></li>
+    IEnumerable<DamvayShop.Web.Models.ProductCategoryViewModel> listChild = Model.productCategoryVm.Where(x => x.ParentID == item.ID);
+
+    if (listChild.Count() == 0)
+    {
+        var url = "/" + item.Alias + ".pc-" + item.ID + ".html";
+        <li>
+            <a href="@url">@item.Name</a>
+        </li>
+    }
+    else
+    {
+        <li class="has-dropdown">
+            <a>@item.Name</a>
+            <ul class="dropdown">
+                @foreach (var child in listChild)
+                {
+                    var url = "/" + child.Alias + ".pc-" + child.ID + ".html";
+                    <li>
+                        <a href="@url">@child.Name</a>
+                    </li>
+                }
+            </ul>
+        </li>
+
+    }
 }
 
 <li><a href="/blog.html">@Model.postCategoryVm.SingleOrDefault().Name</a></li>
