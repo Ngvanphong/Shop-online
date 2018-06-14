@@ -27,7 +27,6 @@ namespace DamvayShop.Model.Models
         public virtual Order Order { set; get; }
         [ForeignKey("ProductID")]
         public virtual Product Product { set; get; }
-        [ForeignKey("SizeId")]
-        public virtual Size Size { set; get; }
+      
     }
 }

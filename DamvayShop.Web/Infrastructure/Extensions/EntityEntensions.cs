@@ -155,12 +155,7 @@ namespace DamvayShop.Web.Infrastructure.Extensions
             appUser.Address = appUserViewModel.Address;
             appUser.Avatar = appUserViewModel.Avatar;
         }
-        public static void UpdateProductQuantity(this ProductQuantity quantity, ProductQuantityViewModel quantityVm)
-        {
-            quantity.ProductId = quantityVm.ProductId;
-            quantity.SizeId = quantityVm.SizeId;
-            quantity.Quantity = quantityVm.Quantity;
-        }
+       
 
 
         public static void UpdateProductImage(this ProductImage image, ProductImageViewModel imageVm)
@@ -169,11 +164,7 @@ namespace DamvayShop.Web.Infrastructure.Extensions
             image.Path = imageVm.Path;
             image.Caption = imageVm.Caption;
         }
-        public static void UpdateSize(this Size size, SizeViewModel sizeVm)
-        {
-            size.ID = sizeVm.ID;
-            size.Name = sizeVm.Name;
-        }
+        
 
         public static void UpdateOrder(this Order order, OrderViewModel orderVm)
         {

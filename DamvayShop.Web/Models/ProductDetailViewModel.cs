@@ -10,6 +10,6 @@ namespace DamvayShop.Web.Models
         public ProductViewModel ProductVm;
         public IEnumerable<ProductViewModel> ListProductVm;
         public IEnumerable<ProductImageViewModel> ListProductImageVm;
-        public IEnumerable<SizeViewModel>SizeVm;
+
     }
 }

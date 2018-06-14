@@ -233,7 +233,6 @@
     <Compile Include="Api\ProductCategoryController.cs" />
     <Compile Include="Api\ProductController.cs" />
     <Compile Include="Api\ProductImageController.cs" />
-    <Compile Include="Api\ProductQuantityController.cs" />
     <Compile Include="Api\SlideController.cs" />
     <Compile Include="Api\SupportOnlineController.cs" />
     <Compile Include="Api\SystemConfigController.cs" />
@@ -284,13 +283,11 @@
     <Compile Include="Models\ProductCategoryViewModel.cs" />
     <Compile Include="Models\ProductDetailViewModel.cs" />
     <Compile Include="Models\ProductImageViewModel.cs" />
-    <Compile Include="Models\ProductQuantityViewModel.cs" />
     <Compile Include="Models\ProductTagViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\SavePermissionRequest.cs" />
     <Compile Include="Models\ShoppingCartViewModel.cs" />
-    <Compile Include="Models\SizeViewModel.cs" />
     <Compile Include="Models\SlideViewModel.cs" />
     <Compile Include="Models\SupportOnlineViewModel.cs" />
     <Compile Include="Models\SystemConfigViewModel.cs" />

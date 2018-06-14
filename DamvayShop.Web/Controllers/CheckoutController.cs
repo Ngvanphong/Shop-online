@@ -135,7 +135,6 @@ namespace DamvayShop.Web.Controllers
                 }
                 orderDetail.Price = price;
                 orderDetail.Quantity = item.Quantity;
-                orderDetail.SizeId = item.SizesVm.ID;
                 orderDetail.ProductID = item.productViewModel.ID;
                 _orderService.CreateDetail(orderDetail);
                 _orderService.Save();              

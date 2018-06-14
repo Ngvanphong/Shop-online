@@ -42,7 +42,6 @@ namespace DamvayShop.Model.Models
         public bool? HomeFlag { set; get; }
         public bool? HotFlag { get; set; }
         public int? ViewCount { set; get; }
-
         public virtual ICollection<ProductTag> ProductTags { set; get; }
         [MaxLength(256)]
         public string Tags { set; get; }

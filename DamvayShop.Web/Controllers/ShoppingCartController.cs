@@ -14,11 +14,11 @@ namespace DamvayShop.Web.Controllers
     public class ShoppingCartController : Controller
     {
        private IProductService _productService;
-       private IProductQuantityService _productQantityService;
-        public ShoppingCartController(IProductService productService, IProductQuantityService productQuantityService)
+
+        public ShoppingCartController(IProductService productService)
         {
             this._productService = productService;
-            this._productQantityService = productQuantityService;
+            
         }
         // GET: ShoppingCart
         public ActionResult Index()
@@ -47,7 +47,7 @@ namespace DamvayShop.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(int productId,int sizeId)
+        public JsonResult Add(int productId)
         {
             if (Session[Common.CommonConstant.CountShopping] == null)
             {
@@ -55,22 +55,18 @@ namespace DamvayShop.Web.Controllers
             }
             var countShopping =(int)Session[Common.CommonConstant.CountShopping];
             var shoppingCart = (List<ShoppingCartViewModel>)Session[Common.CommonConstant.SesstionCart];
-            SizeViewModel sizeVm = new SizeViewModel();
-
-               sizeVm = Mapper.Map<SizeViewModel>(_productQantityService.GetSizeById(sizeId));
-               
+          
                                       
             if (shoppingCart == null)
             {
                 shoppingCart = new List<ShoppingCartViewModel>();
              
             };
-            if (shoppingCart.Any(x => x.productId == productId&&x.SizesVm.ID==sizeId))
+            if (shoppingCart.Any(x => x.productId == productId))
             {
                 foreach(var item in shoppingCart)
                 {
-
-                    if (item.productId == productId&&item.SizesVm.ID==sizeId)
+                    if (item.productId == productId)
                     {
                         item.Quantity += 1;
                        
@@ -86,7 +82,6 @@ namespace DamvayShop.Web.Controllers
                     productId = productId,
                     productViewModel = Mapper.Map<ProductViewModel>(product),
                     Quantity = 1,                  
-                    SizesVm= sizeVm,
                 };
                 shoppingCart.Add(cart);
             }
@@ -107,7 +102,7 @@ namespace DamvayShop.Web.Controllers
             {
                 foreach(var itemVm in listCartVm)
                 {
-                    if (itemVm.productId == item.productId&&item.SizesVm.Name==itemVm.SizesVm.Name)
+                    if (itemVm.productId == item.productId)
                     {
                         item.Quantity = itemVm.Quantity;
                     }
@@ -162,12 +157,12 @@ namespace DamvayShop.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult DeleteItem(int productId, string size)
+        public JsonResult DeleteItem(int productId)
         {     
             var shoppingCart = (List<ShoppingCartViewModel>)Session[Common.CommonConstant.SesstionCart];
             if (shoppingCart != null)
             {
-                shoppingCart.RemoveAll(x => x.productId == productId&&(x.SizesVm.Name==size|| x.SizesVm.Name == null));
+                shoppingCart.RemoveAll(x => x.productId == productId);
             }
          
             Session[Common.CommonConstant.SesstionCart] = shoppingCart;

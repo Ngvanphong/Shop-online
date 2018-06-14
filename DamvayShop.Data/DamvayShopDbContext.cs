@@ -24,12 +24,12 @@ namespace DamvayShop.Data
         public DbSet<PostCategory> PostCategories { get; set; }
         public DbSet<PostTag> PostTags { get; set; }
 
-        public DbSet<Size> Sizes { set; get; }
+       
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductTag> ProductTags { get; set; }
         public DbSet<ProductImage> ProductImages { set; get; }
-        public DbSet<ProductQuantity> ProductQuantities { set; get; }
+       
 
         public DbSet<SystemConfig> SystemConfigs { set; get; }
 

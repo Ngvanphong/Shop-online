@@ -17,15 +17,15 @@ namespace DamvayShop.Web.Controllers
         private IProductService _productService;
         private IProductCategoryService _productCategoryService;
         private IProductImageService _productImageService;
-        private IProductQuantityService _productQuantityService;
+
         public ProductController(IProductService productService, IProductCategoryService productCategoryService, IProductImageService productImageService,
-          ITagService tagService, IProductQuantityService productQuantityService)
+          ITagService tagService)
         {
             this._productService = productService;
             this._productCategoryService = productCategoryService;
             this._productImageService = productImageService;
             this._tagService = tagService;
-            this._productQuantityService = productQuantityService;
+            
         }
         // GET: ProductCategory
       
@@ -69,9 +69,7 @@ namespace DamvayShop.Web.Controllers
         {
             Product productDb = _productService.GetById(id);
             ProductViewModel productVm = Mapper.Map<ProductViewModel>(productDb);
-            IEnumerable<Size> sizeDb = _productQuantityService.GetSizeByProductId(id);
-            IEnumerable<SizeViewModel> sizeVm = Mapper.Map<IEnumerable<SizeViewModel>>(sizeDb);
-
+            
             IEnumerable<Product> listProductDb = _productService.GetProductRelate(productVm.CategoryID);
             IEnumerable<ProductViewModel> listProductVm = Mapper.Map<IEnumerable<ProductViewModel>>(listProductDb);
             IEnumerable<ProductImage> listProductImageDb = _productImageService.GetProductImageByProdutID(id);
@@ -86,7 +84,7 @@ namespace DamvayShop.Web.Controllers
                 ListProductImageVm = listProductImageVm,
                 ListProductVm = listProductVm,
                 ProductVm = productVm,
-                SizeVm=sizeVm,               
+            
             };
             return View(ProductDetail);
 

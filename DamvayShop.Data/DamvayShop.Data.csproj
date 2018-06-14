@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201806140301039_changeunit.Designer.cs">
       <DependentUpon>201806140301039_changeunit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806141151327_changequantity.cs" />
+    <Compile Include="Migrations\201806141151327_changequantity.Designer.cs">
+      <DependentUpon>201806141151327_changequantity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reponsitories\ErrorRepository.cs" />
@@ -84,10 +88,8 @@
     <Compile Include="Reponsitories\PostTagRepository.cs" />
     <Compile Include="Reponsitories\ProductCategoryRepository.cs" />
     <Compile Include="Reponsitories\ProductImageRepository.cs" />
-    <Compile Include="Reponsitories\ProductQuantityRepository.cs" />
     <Compile Include="Reponsitories\ProductRepository.cs" />
     <Compile Include="Reponsitories\ProductTagRepository.cs" />
-    <Compile Include="Reponsitories\SizeRepository.cs" />
     <Compile Include="Reponsitories\SlideRepository.cs" />
     <Compile Include="Reponsitories\SupportOnlineRepository.cs" />
     <Compile Include="Reponsitories\SystemConfigRepository.cs" />
@@ -117,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806140301039_changeunit.resx">
       <DependentUpon>201806140301039_changeunit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141151327_changequantity.resx">
+      <DependentUpon>201806141151327_changequantity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

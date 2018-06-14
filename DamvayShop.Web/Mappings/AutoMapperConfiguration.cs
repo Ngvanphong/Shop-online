@@ -26,9 +26,7 @@ namespace DamvayShop.Web.Mappings
                   cfg.CreateMap<Function, FunctionViewModel>();
                   cfg.CreateMap<Permission, PermissionViewModel>();
                   cfg.CreateMap<AppRole, ApplicationRoleViewModel>();
-                  cfg.CreateMap<AppUser,ApplicationUserViewModel>();
-                  cfg.CreateMap<Size, SizeViewModel>();
-                  cfg.CreateMap<ProductQuantity, ProductQuantityViewModel>();
+                  cfg.CreateMap<AppUser,ApplicationUserViewModel>();                 
                   cfg.CreateMap<ProductImage, ProductImageViewModel>();
               });
 

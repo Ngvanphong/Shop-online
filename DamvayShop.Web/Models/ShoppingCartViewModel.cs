@@ -11,7 +11,7 @@ namespace DamvayShop.Web.Models
         public int productId;
         public ProductViewModel productViewModel;
         public int Quantity;
-        public SizeViewModel SizesVm;
+
 
     }
 }

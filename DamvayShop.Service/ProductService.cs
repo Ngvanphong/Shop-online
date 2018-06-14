@@ -237,7 +237,7 @@ namespace DamvayShop.Service
 
         public IEnumerable<Product> GetProductRelate(int CategoryId)
         {
-            return _productRepository.GetMulti(x => x.Status == true && x.CategoryID == CategoryId).OrderBy(x => x.UpdatedDate).Take(8);
+            return _productRepository.GetMulti(x => x.Status == true && x.CategoryID == CategoryId).OrderBy(x => x.UpdatedDate).Take(4);
         }
 
         public IEnumerable<Product> GetPromotionProduct()
@@ -287,7 +287,7 @@ namespace DamvayShop.Service
 
         public IEnumerable<Product> GetTopProductByDay()
         {
-            return _productRepository.GetAll().OrderByDescending(x => x.UpdatedDate).Take(8);
+            return _productRepository.GetAll().OrderByDescending(x => x.UpdatedDate).Take(12);
         }
     }
 }

@@ -22,6 +22,6 @@ namespace DamvayShop.Web.Models
 
         public virtual ProductViewModel Product { set; get; }
      
-        public virtual Size Size { set; get; }
+       
     }
 }
