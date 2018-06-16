@@ -1,0 +1,178 @@
+﻿@model OnlineShop.Web.Infrastructure.Core.PaginationClient<OnlineShop.Web.Models.ProductViewModel>
+@{
+    var Category = (OnlineShop.Web.Models.ProductCategoryViewModel)ViewBag.Category;
+    var pageIndex = Model.PageIndex;
+    ViewBag.Title = pageIndex == 1 ? Category.Name : Category.Name + "-trang=" + pageIndex;
+    ViewBag.MetaKeyword = pageIndex == 1 ? Category.MetaKeyword : Category.MetaKeyword + "-trang=" + pageIndex;
+    ViewBag.MetaDiscription = pageIndex == 1 ? Category.MetaDiscription : Category.MetaDiscription + "-trang=" + pageIndex;
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var tagProduct = (IEnumerable<OnlineShop.Web.Models.TagViewModel>)ViewBag.TagProduct;
+    var urlParent = "/" + Category.Alias + ".pc-" + Category.ID + ".html";
+    var sort = (string)ViewBag.Sort;
+}
+@section JavaScriptLayout{
+    <script src="~/Assets/client/js/Sort.js"></script>
+}
+<div class="container">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/index.html">Home</a>
+            </li>
+            <li>@Category.Name</li>
+        </ul>
+
+    </div>
+    <!-- /.col-md-9 -->
+</div>
+<!-- /.container -->
+<div class="colorlib-shop">
+    <div class="container">
+        <div class="row">
+            @if (Model.Count > 0)
+            {
+                <div class="col-md-10 col-md-push-2">
+                    <div class="row row-pb-lg">
+                        @foreach (var item in Model.Items)
+                        {
+                            var url = "/" + item.Alias + ".p-" + item.ID + ".html";
+                            <div class="col-md-4 text-center">
+                                <div class="product-entry">
+                                    <div class="product-img" style="background-image: url(@item.ThumbnailImage);">
+                                        @if (item.PromotionPrice.HasValue == true)
+                                        {
+                                            <p class="tag"><span class="sale">Sale</span></p>
+                                        }
+                                        <div class="cart">
+                                            <p>
+                                                <span><a href="@url"><i class="icon-eye"></i>Xem</a></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="desc">
+                                        <h3><a href="@url">@item.Name</a></h3>
+                                        @if (item.PromotionPrice.HasValue == true)
+                                        {
+                                            <p class="price"><span>@item.PromotionPrice</span> <span class="sale">@item.Price@item.Unit</span> </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="price"><span>@item.Price@item.Unit</span> </p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @if (Model.TotalPage > 1)
+                    {
+                        var startPageIndex = Math.Max(1, Model.PageIndex - Model.PageDisplay / 2);
+                        var endPageIndex = Math.Min(Model.TotalPage, Model.PageIndex + Model.PageDisplay / 2);
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="pagination">
+                                 
+                                    @if(Model.PageIndex > 1)
+                                    {
+                                    <li><a href="?page=@(Model.PageIndex - 1)&sort=@sort">&laquo;</a></li>
+                                    }
+                                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                    {
+                                        if (i == Model.PageIndex)
+                                        {
+                                            <li class="active">
+                                                <a href="?page=@i&sort=@sort">@i</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a href="?page=@i&sort=@sort">@i</a>
+                                            </li>
+                                        }
+
+                                    }
+                                    @if(Model.PageIndex < Model.TotalPage)
+                                    {
+                                        <li>
+                                            <a href="?page=@(Model.PageIndex + 1)&sort=@sort">&raquo;</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            }
+            else
+            {
+                <div class="text-center"><h3>Không có sản phẩm</h3></div>;
+            }
+
+            <div class="col-md-2 col-md-pull-10">
+                <div class="sidebar">
+                    <div class="side">
+                        <h2>Sắp xếp</h2>
+                        <form method="post" class="colorlib-form-2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-field">
+                                            <select id="choiceshort" name="sort-by" class="form-control">
+                                                @if (sort == "lasted")
+                                                {
+                                                    <option selected value="@urlParent?page=1 &sort=lasted">Mới</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@urlParent?page=1 &sort=lasted">Mới</option>
+                                                }
+                                                @if (sort == "price")
+                                                {
+                                                    <option selected value="@urlParent?page=1 &sort=price"> Giá --></option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@urlParent?page=1 &sort=price"> Giá --></option>
+                                                }
+                                                @if (sort == "promotion")
+                                                {
+                                                    <option selected value="@urlParent?page=1&sort=promotion">Giảm giá</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@urlParent?page=1&sort=promotion">Giảm giá</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="side">
+                        <h2>Tag</h2>
+                        <div class="fancy-collapse-panel">
+                            <div class="panel-body">
+                                <ul>
+                                    @if (tagProduct.Count() > 0)
+                                    {
+                                        foreach (var item in tagProduct)
+                                        {
+                                            var url = "/tag-" + item.ID + ".html";
+                                            <li><a href="@url">@item.Name</a></li>
+                                        }
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
