@@ -1,0 +1,28 @@
+﻿
+@model ShopOnline.Web.Models.HeaderViewModel
+
+<nav class="colorlib-nav" role="navigation">
+    <div class="top-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <div id="colorlib-logo"><a href="/">Store</a></div>
+                </div>
+                <div class="col-xs-10 text-right menu-1">
+                    <ul>
+                        @{Html.RenderAction("CategoryHeader", "Home");}
+                        @if (Model.CountShopping > 0)
+                        {
+                            <li><a href="/basket.html"><i class="icon-shopping-cart"></i> Giỏ hàng [@Model.CountShopping]</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="/basket.html"><i class="icon-shopping-cart"></i> Giỏ hàng</a></li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
