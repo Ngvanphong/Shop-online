@@ -1,7 +1,7 @@
 ﻿shoppingCart = {
     intit: function () {
 
-        //shoppingCart.loadData();
+        shoppingCart.loadData();
         shoppingCart.registerEvent();
    
     },
@@ -117,16 +117,16 @@
 
     },
 
-    //getTotalPrice: function () {
-    //    var total = 0;
-    //    $.each($(".txtKeyupQuantity"), function (i, item) {
-    //        var price = parseInt($(item).data('price'));
-    //        var quantity = parseInt($(item).val());
-    //        total += price * quantity;
-    //    });
-    //    $("#totalPriceShopping").text(numeral(total).format('0,0'));
+    getTotalPrice: function () {
+        var total = 0;
+        $.each($(".txtKeyupQuantity"), function (i, item) {
+            var price = parseInt($(item).data('price'));
+            var quantity = parseInt($(item).val());
+            total += price * quantity;
+        });
+        $("#totalPriceShopping").text(numeral(total).format('0,0'));
 
-    //},
+    },
 
 
 
@@ -178,47 +178,46 @@
     //},
    
 
-    //loadData: function () {
-    //    $.ajax({
-    //        cache: false,
-    //        url: "/ShoppingCart/GetAll",
-    //        type: "GET",
-    //        dataType: "Json",
-    //        success: function (res) {
-    //            if (res.status) {
+    loadData: function () {
+        $.ajax({
+            cache: false,
+            url: "/ShoppingCart/GetAll",
+            type: "GET",
+            dataType: "Json",
+            success: function (res) {
+                if (res.status) {
 
-    //                var template = $('#tmpShoppingContent').html();
-    //                var html = "";
-    //                $.each(res.data, function (i, item) {
-    //                    var salePrice = 0;
-    //                    if (item.productViewModel.PromotionPrice != null && item.productViewModel.PromotionPrice != 0) {
-    //                        salePrice = parseInt(item.productViewModel.PromotionPrice) * 1000;
-    //                    }
-    //                    else {
-    //                        salePrice = parseInt(item.productViewModel.Price) * 1000;
-    //                    };
-    //                    html += Mustache.render(template, {
-    //                        Image: item.productViewModel.ThumbnailImage,
-    //                        Name: item.productViewModel.Name,
-    //                        Size: item.SizesVm.Name,
-    //                        ProductId: item.productId,
-    //                        Quantity: item.Quantity,
-    //                        Price: item.productViewModel.Price * 1000,
-    //                        PriceF: numeral(item.productViewModel.Price * 1000).format('0,0'),
-    //                        PromotionPrice: numeral(item.productViewModel.PromotionPrice * 1000).format('0,0'),
-    //                        salePrice: salePrice,
-    //                        Amount: numeral(salePrice * item.Quantity).format('0,0'),
-    //                    })
-    //                });
+                    var template = $('#tmpShoppingContent').html();
+                    var html = "";
+                    $.each(res.data, function (i, item) {
+                        var salePrice = 0;
+                        if (item.productViewModel.PromotionPrice != null && item.productViewModel.PromotionPrice != 0) {
+                            salePrice = parseInt(item.productViewModel.PromotionPrice) * 1000;
+                        }
+                        else {
+                            salePrice = parseInt(item.productViewModel.Price) * 1000;
+                        };
+                        html += Mustache.render(template, {
+                            Image: item.productViewModel.ThumbnailImage,
+                            Name: item.productViewModel.Name,                        
+                            ProductId: item.productId,
+                            Quantity: item.Quantity,
+                            Price: item.productViewModel.Price * 1000,
+                            PriceF: numeral(item.productViewModel.Price * 1000).format('0,0'),
+                            PromotionPrice: numeral(item.productViewModel.PromotionPrice * 1000).format('0,0'),
+                            salePrice: salePrice,
+                            Amount: numeral(salePrice * item.Quantity).format('0,0'),
+                        })
+                    });
 
-    //                $('#shopingContent').html(html);          
-    //                shoppingCart.registerEvent();
-    //                shoppingCart.getTotalPrice();
+                    $('#shopingContent').html(html);          
+                    shoppingCart.registerEvent();
+                    shoppingCart.getTotalPrice();
                   
-    //            }
-    //        }
-    //    })
-    //},
+                }
+            }
+        })
+    },
 
   
 

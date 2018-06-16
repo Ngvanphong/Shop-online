@@ -8,29 +8,21 @@
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 @section JavaScriptLayout {
-    @Scripts.Render("~/js/shoppingcart");
+    
+    @*@Scripts.Render("~/js/shoppingcart");*@
 }
 
-
-
 <div id="all">
-
     <div id="content">
         <div class="container">
-
             <div class="col-md-12">
-
                 <ul class="breadcrumb">
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-
                     <li>Giỏ hàng</li>
-
                 </ul>
-
             </div>
-
 
             <div class="col-md-12" id="customer-order">
                 <div class="box">
@@ -41,7 +33,6 @@
                             <thead>
                                 <tr>
                                     <th colspan="2">Sản phẩm</th>
-                                    <th>Size</th>
                                     <th>Số lượng</th>
                                     <th>Giá</th>
                                     <th>Giá khuyến mãi</th>
@@ -55,10 +46,8 @@
                                     <th colspan="7" class="text-right">Tổng tiền:</th>
                                     <th id="totalPriceShopping"></th>
                                 </tr>
-
                             </tfoot>
                         </table>
-
                     </div>
                     <!-- /.table-responsive -->
                     <div class="box-footer">
@@ -69,15 +58,12 @@
                             <a class="btn btn-primary" id="gotoCheckout"> Thanh toán <i class="fa fa-chevron-right"></i></a>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
         <!-- /.container -->
     </div>
 </div>
-
 
 <script id="tmpShoppingContent" type="x-tmpl-mustache">
     <tr>
@@ -90,7 +76,6 @@
         <td data-id="{{ProductId}}" class="txtSizeShopping">
             {{Size}}
         </td>
-
         <td><input type="number" data-size="{{Size}}" data-price="{{salePrice}}" data-id="{{ProductId}}" value="{{Quantity}}" class="form-control txtKeyupQuantity" /></td>
         <td>{{PriceF}}</td>
         <td>{{PromotionPrice}}</td>
@@ -98,6 +83,4 @@
         <td><button data-size="{{Size}}" data-id="{{ProductId}}" class="btn btn-danger btnDeleteItemShoppingCart"><i class="fa fa-trash-o"></i></button></td>
     </tr>
 </script>
-
-
 
