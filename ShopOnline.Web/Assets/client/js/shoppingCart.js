@@ -8,8 +8,9 @@
     registerEvent: function () {
         $(".btnshoppingCart").off('click').on('click', function (e) {
             e.preventDefault();
-            var productId = parseInt($(this).data('id'));           
-            shoppingCart.addItem(productId);
+            var productId = parseInt($(this).data('id'));
+            var quantity = parseInt($("#quantity").val());
+            shoppingCart.addItem(productId,quantity);
         });
         $("#gotoCheckout").off('click').on('click', function (e) {
             e.preventDefault();
@@ -31,12 +32,7 @@
        
         });
 
-        $("#quantity").off('change').on('change', function (e) {
-            e.preventDefault();
-            var quantity = parseInt($(this).val());
-            var productId = parseInt($(this).data('id'));
-            shoppingCart.addQuantity(productId, quantity);
-        });
+     
 
         //$("#validationOrder").validate({
         //    rules: {
@@ -103,23 +99,23 @@
         //});
        
 
-        //$(".txtKeyupQuantity").off('keyup').on('keyup', function (e) {
-        //    e.preventDefault();
-        //    var salePrice = parseInt($(this).data('price'));
-        //    var quantity = parseInt($(this).val());
-        //    var size = $(this).data('size')
-        //    var productId = parseInt($(this).data('id'));
+        $(".txtKeyupQuantity").off('change').on('change', function (e) {
+            e.preventDefault();
+            var salePrice = parseInt($(this).data('price'));
+            var quantity = parseInt($(this).val());
+            
+            var productId = parseInt($(this).data('id'));
 
-        //    if (isNaN(quantity) == false) {
+            if (isNaN(quantity) == false) {
 
-        //        $("#amount_" + productId+"_"+size).text(numeral(salePrice * quantity).format('0,0'));
+                $("#amount_" + productId).text(numeral(salePrice * quantity).format('0,0'));
 
-        //    }
-        //    else {
-        //        $("#amount_" + productId+"-"+size).text(0)
-        //    }
-        //    shoppingCart.getTotalPrice();
-        //});
+            }
+            else {
+                $("#amount_" + productId).text(0)
+            }
+            shoppingCart.getTotalPrice();
+        });
 
 
     },
@@ -135,29 +131,16 @@
 
     },
 
-    addQuantity: function (productId, quantity) {
-        
-        $.ajax({
-            url: "/ShoppingCart/AddQuantity",
-            type: "POST",
-            dataType: "Json",
-            data: {
-                productId: productId,
-                quantity: quantity,
-            },
-            
-        })
-    },
+  
 
-
-
-    addItem: function (productId) {
+    addItem: function (productId, quantity) {
         $.ajax({
             url: "/ShoppingCart/Add",
             type: "POST",
             dataType: "Json",
             data: {
-                productId: productId,            
+                productId: productId,
+                quantity:quantity
             },
             success: function (res) {
                 if (res.status) {              
@@ -242,24 +225,23 @@
 
   
 
-    //deleteItem: function (productId,sizeName) {
-    //    $.ajax({
-    //        url: "/ShoppingCart/DeleteItem",
-    //        type: "POST",
-    //        dataType: "Json",
-    //        data: {
-    //            productId: productId,
-    //            size:sizeName
-    //        },
-    //        success: function (res) {
-    //            if (res.status) {
-    //                shoppingCart.loadData();
-    //            }
-    //        }
+    deleteItem: function (productId) {
+        $.ajax({
+            url: "/ShoppingCart/DeleteItem",
+            type: "POST",
+            dataType: "Json",
+            data: {
+                productId: productId,              
+            },
+            success: function (res) {
+                if (res.status) {
+                    shoppingCart.loadData();
+                }
+            }
 
-    //    })
+        })
 
-    //},
+    },
 
     //getTaxForHCM: function (districtId) {
     //    $.ajax({

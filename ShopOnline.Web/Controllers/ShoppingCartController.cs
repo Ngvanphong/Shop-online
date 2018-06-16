@@ -47,7 +47,7 @@ namespace ShopOnline.Web.Controllers
         }
 
         [HttpPost]
-        public JsonResult Add(int productId)
+        public JsonResult Add(int productId, int quantity)
         {
             if (Session[Common.CommonConstant.CountShopping] == null)
             {
@@ -68,7 +68,7 @@ namespace ShopOnline.Web.Controllers
                 {
                     if (item.productId == productId)
                     {
-                        item.Quantity += 1;
+                        item.Quantity += quantity;
                        
                     }
                 }
@@ -81,7 +81,7 @@ namespace ShopOnline.Web.Controllers
                 {
                     productId = productId,
                     productViewModel = Mapper.Map<ProductViewModel>(product),
-                    Quantity = 1,                  
+                    Quantity = quantity,                  
                 };
                 shoppingCart.Add(cart);
             }
@@ -173,54 +173,6 @@ namespace ShopOnline.Web.Controllers
 
             });
 
-        }
-
-        [HttpPost]
-        public JsonResult AddQuantity(int productId,int quantity)
-        {
-            if (Session[Common.CommonConstant.CountShopping] == null)
-            {
-                Session[Common.CommonConstant.CountShopping] = new int();
-            }
-            var countShopping = (int)Session[Common.CommonConstant.CountShopping];
-            var shoppingCart = (List<ShoppingCartViewModel>)Session[Common.CommonConstant.SesstionCart];
-
-
-            if (shoppingCart == null)
-            {
-                shoppingCart = new List<ShoppingCartViewModel>();
-
-            };
-            if (shoppingCart.Any(x => x.productId == productId))
-            {
-                foreach (var item in shoppingCart)
-                {
-                    if (item.productId == productId)
-                    {
-                        item.Quantity += quantity;
-
-                    }
-                }
-            }
-            else
-            {
-                Product product = _productService.GetById(productId);
-
-                ShoppingCartViewModel cart = new ShoppingCartViewModel()
-                {
-                    productId = productId,
-                    productViewModel = Mapper.Map<ProductViewModel>(product),
-                    Quantity = quantity,
-                };
-                shoppingCart.Add(cart);
-            }
-            countShopping += 1;
-            Session[Common.CommonConstant.SesstionCart] = shoppingCart;
-            Session[Common.CommonConstant.CountShopping] = countShopping;
-            return Json(new
-            {
-                status = true
-            });
         }
 
     }
