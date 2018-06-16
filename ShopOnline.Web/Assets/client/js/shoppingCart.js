@@ -151,35 +151,32 @@
 
     },
 
-    //updateAll: function () {
+    updateAll: function () {
 
-    //    var cartList = [];
-    //    $.each($(".txtKeyupQuantity"), function (i, item) {
-    //        cartList.push({
-    //            productId: $(this).data("id"),
-    //            Quantity: $(this).val(),
-    //            SizesVm:{
-    //               Name: $(this).data("size"),
-    //            }
-    //        });
-    //    });
-    //    $.ajax({
-    //        url: "/ShoppingCart/Update",
-    //        type: "POST",
-    //        dataType: "Json",
-    //        data: {
-    //            listCart: JSON.stringify(cartList),
-    //        },
-    //        success: function (res) {
-    //            if (res.status) {
-    //                shoppingCart.loadData();
-    //                window.location.href = "/checkout.html";
-    //            }
-    //        }
+        var cartList = [];
+        $.each($(".txtKeyupQuantity"), function (i, item) {
+            cartList.push({
+                productId: $(this).data("id"),
+                Quantity: $(this).val(),            
+            });
+        });
+        $.ajax({
+            url: "/ShoppingCart/Update",
+            type: "POST",
+            dataType: "Json",
+            data: {
+                listCart: JSON.stringify(cartList),
+            },
+            success: function (res) {
+                if (res.status) {
+                    shoppingCart.loadData();
+                    window.location.href = "/checkout.html";
+                }
+            }
 
-    //    });
+        });
 
-    //},
+    },
    
 
     loadData: function () {
