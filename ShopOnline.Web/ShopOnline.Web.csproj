@@ -304,6 +304,9 @@
     <Content Include="Assets\client\css\bootstrap-datepicker.css" />
     <Content Include="Assets\client\css\bootstrap.css" />
     <Content Include="Assets\client\css\flexslider.css" />
+    <Content Include="Assets\client\css\font-awesome.css" />
+    <Content Include="Assets\client\css\fonts\flexslider-icon.svg" />
+    <Content Include="Assets\client\css\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\client\css\icomoon.css" />
     <Content Include="Assets\client\css\magnific-popup.css" />
     <Content Include="Assets\client\css\owl.carousel.min.css" />
@@ -509,6 +512,13 @@
     <Content Include="Assets\client\sass\_bootstrap-compass.scss" />
     <Content Include="Assets\client\sass\_bootstrap-mincer.scss" />
     <Content Include="Assets\client\sass\_bootstrap-sprockets.scss" />
+    <Content Include="Assets\client\css\fonts\flexslider-icon.eot" />
+    <Content Include="Assets\client\css\fonts\flexslider-icon.ttf" />
+    <Content Include="Assets\client\css\fonts\flexslider-icon.woff" />
+    <Content Include="Assets\client\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\client\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\client\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\client\css\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile10.pubxml" />

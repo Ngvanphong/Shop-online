@@ -8,7 +8,7 @@
     registerEvent: function () {
         $(".btnshoppingCart").off('click').on('click', function (e) {
             e.preventDefault();
-            var productId = parseInt($(this).data('id'));        
+            var productId = parseInt($(this).data('id'));           
             shoppingCart.addItem(productId);
         });
         $("#gotoCheckout").off('click').on('click', function (e) {
@@ -29,6 +29,13 @@
                 shoppingCart.gotoComfirm();
             };
        
+        });
+
+        $("#quantity").off('change').on('change', function (e) {
+            e.preventDefault();
+            var quantity = parseInt($(this).val());
+            var productId = parseInt($(this).data('id'));
+            shoppingCart.addQuantity(productId, quantity);
         });
 
         //$("#validationOrder").validate({
@@ -126,6 +133,20 @@
         });
         $("#totalPriceShopping").text(numeral(total).format('0,0'));
 
+    },
+
+    addQuantity: function (productId, quantity) {
+        
+        $.ajax({
+            url: "/ShoppingCart/AddQuantity",
+            type: "POST",
+            dataType: "Json",
+            data: {
+                productId: productId,
+                quantity: quantity,
+            },
+            
+        })
     },
 
 
