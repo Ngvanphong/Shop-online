@@ -7,8 +7,8 @@
     <ProjectGuid>{2BD59EB4-23F8-45CE-A21D-32B0F15AAEF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DamvayShop.Data</RootNamespace>
-    <AssemblyName>DamvayShop.Data</AssemblyName>
+    <RootNamespace>ShopOnline.Data</RootNamespace>
+    <AssemblyName>ShopOnline.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -2076,7 +2076,7 @@ input[type="text"] {
       visibility: visible;
       opacity: 1; }
 
-.form-control {
+/*.form-control {
   -webkit-box-shadow: none;
   box-shadow: none;
   background: transparent;
@@ -2088,7 +2088,7 @@ input[type="text"] {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none;
-    border-color: #FFC300; }
+    border-color: #FFC300; }*/
 
 .row-pb-lg {
   padding-bottom: 6em !important; }
@@ -2120,4 +2120,18 @@ input[type="text"] {
     height: 350px;
     margin-bottom: 20px;
     position: relative;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
