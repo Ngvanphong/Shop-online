@@ -1,0 +1,91 @@
+﻿@model OnlineShop.Web.Models.FooterCommon
+<div id="colorlib-subscribe">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="colorlib-footer" role="contentinfo">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col-md-3 colorlib-widget">
+                <h4>Danh mục sản phẩm</h4>
+                <p>
+                    <ul class="colorlib-footer-links">
+
+                        @foreach (var item in Model.listCategoryProduct)
+                        {
+                            var url = "/" + item.Alias + ".pc-" + item.ID + ".html";
+                            <li><a href="@url">@item.Name</a></li>
+                        }
+                    </ul>
+                </p>
+            </div>
+            <div class="col-md-2 colorlib-widget">
+                <h4>Thông tin</h4>
+                <p>
+                    <ul class="colorlib-footer-links">
+                        <li><a href="/about.html">Gới thiệu</a></li>
+                        <li><a href="/contact.html">Liên hệ</a></li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <h4>Hỗ trợ trực tuyến</h4>
+                <ul class="colorlib-footer-links">
+                    <li>Tên: @Model.supportOnlineVm.Name</li>
+                    <li>SĐT: @Model.supportOnlineVm.Mobile</li>
+                    <li>Email: @Model.supportOnlineVm.Email</li>
+                    <li>Skype: @Model.supportOnlineVm.Skype</li>
+                    <li>Facebook: @Model.supportOnlineVm.Facebook</li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h4>Tag</h4>
+                <ul class="colorlib-footer-links">
+                    @foreach (var item in Model.tagVm.Take(9))
+                    {
+                        var url = "/tag-" + item.ID + ".html";
+                        <li>
+                            <a href="@url">@item.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            @if (Model.tagVm.Count() > 9)
+            {
+                <div class="col-md-2">
+                    <h4>Tag</h4>
+                    <ul class="colorlib-footer-links">
+                        @foreach (var item in Model.tagVm.Skip(9).Take(9))
+                        {
+                            var url = "/tag-" + item.ID + ".html";
+                            <li>
+                                <a href="@url">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="copy">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>
+                    <span class="block">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart2" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </span>
+                    <span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
+                    @*@Html.Raw(Model.footerVm.Content)*@
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

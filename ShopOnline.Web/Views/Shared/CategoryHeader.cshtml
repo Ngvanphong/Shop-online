@@ -1,0 +1,35 @@
+﻿
+@model OnlineShop.Web.Models.CategoryHeaderViewModel
+<li class="active"><a href="/">Trang chủ</a></li>
+@foreach (var item in Model.productCategoryVm.Where(x => x.ParentID == null))
+{
+    IEnumerable<OnlineShop.Web.Models.ProductCategoryViewModel> listChild = Model.productCategoryVm.Where(x => x.ParentID == item.ID);
+
+    if (listChild.Count() == 0)
+    {
+        var url = "/" + item.Alias + ".pc-" + item.ID + ".html";
+        <li>
+            <a href="@url">@item.Name</a>
+        </li>
+    }
+    else
+    {
+        <li class="has-dropdown">
+            <a>@item.Name</a>
+            <ul class="dropdown">
+                @foreach (var child in listChild)
+                {
+                    var url = "/" + child.Alias + ".pc-" + child.ID + ".html";
+                    <li>
+                        <a href="@url">@child.Name</a>
+                    </li>
+                }
+            </ul>
+        </li>
+
+    }
+}
+
+<li><a href="/blog.html">@Model.postCategoryVm.SingleOrDefault().Name</a></li>
+<li><a href="/about.html">Giới thiệu</a></li>
+<li><a href="/contact.html">Liên hệ</a></li>

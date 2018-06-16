@@ -1,0 +1,206 @@
+﻿@model OnlineShop.Web.Models.ProductDetailViewModel
+@{
+    ViewBag.Title = Model.ProductVm.Name;
+    ViewBag.MetaKeyword = Model.ProductVm.MetaKeyword;
+    ViewBag.MetaDiscription = Model.ProductVm.MetaDiscription;
+
+    Layout = "~/Views/Shared/Layouts.cshtml";
+    var productTags = (IEnumerable<OnlineShop.Web.Models.TagViewModel>)ViewBag.TagProducts;
+    var productCategory = (OnlineShop.Model.Models.ProductCategory)ViewBag.ProductCategory;
+    var categoryUrl = "/" + productCategory.Alias + ".pc-" + productCategory.ID + ".html";
+}
+@section JavaScriptLayout {
+    <script src="~/Assets/client/js/shoppingCart.js"></script>
+    <script src="~/Assets/client/js/changeImage.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            var quantitiy = 0;
+            $('.quantity-right-plus').click(function (e) {
+
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                $('#quantity').val(quantity + 1);
+                // Increment
+
+            });
+
+            $('.quantity-left-minus').click(function (e) {
+                // Stop acting like a button
+                e.preventDefault();
+                // Get the field name
+                var quantity = parseInt($('#quantity').val());
+                // If is not undefined
+                // Increment
+                if (quantity > 0) {
+                    $('#quantity').val(quantity - 1);
+                }
+            });
+
+        });
+    </script>
+}
+<div class="container">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>
+                <a href="/index.html">Home</a>
+            </li>
+            <li>
+                <a href="@categoryUrl">@productCategory.Name</a>
+            </li>
+            <li>@Model.ProductVm.Name</li>
+        </ul>
+    </div>
+    <!-- /.col-md-9 -->
+</div>
+<!-- /.container -->
+<div class="colorlib-shop">
+    <div class="container">
+        <div class="row row-pb-lg">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="product-detail-wrap">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="product-entry">
+                                <div id="mainImage" class="product-img" style="background-image: url(@Model.ProductVm.ThumbnailImage);">
+                                    @if (Model.ProductVm.PromotionPrice.HasValue == true)
+                                    {
+                                        <p class="tag"><span class="sale">Sale</span></p>
+                                    }
+                                </div>
+                                <div class="thumb-nail">
+                                    @foreach (var item in Model.ListProductImageVm)
+                                    {
+                                        <a href="@item.Path" class="thumb thumb-img" style="background-image: url(@item.Path);"></a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="desc">
+                                <h3>@Model.ProductVm.Name</h3>
+                                <p class="price">
+                                    @if (Model.ProductVm.PromotionPrice.HasValue == true)
+                                    {
+                                        <span>@Model.ProductVm.PromotionPrice@Model.ProductVm.Unit</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@Model.ProductVm.Price@Model.ProductVm.Unit</span>
+                                    }
+                                </p>
+                                <div class="size-wrap">
+                                    <p class="size-desc">
+                                        Tag:
+                                    </p>
+                                    <p>
+                                        @foreach (var tagitem in productTags)
+                                        {
+                                            var url = "/tag-" + tagitem.ID + ".html";
+                                            <a href="@url" style="color:black">@(tagitem.Name);</a>
+                                        }
+                                    </p>
+
+
+                                </div>
+                                <div class="size-wrap">
+                                    <p class="size-desc">
+                                        Số lượng
+                                    </p>
+                                </div>
+                                <p>@Model.ProductVm.Description</p>
+                                <div class="row row-pb-sm">
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                                                    <i class="icon-minus2"></i>
+                                                </button>
+                                            </span>
+                                            <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                                                    <i class="icon-plus2"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><a class="btnshoppingCart btn btn-primary btn-addtocart" data-id="@Model.ProductVm.ID"><i class="icon-shopping-cart"></i>Mua hàng</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row">
+                    <div class="col-md-12 tabulation">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#description">Chi tiết</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="description" class="tab-pane fade in active">
+                                @Html.Raw(Model.ProductVm.Content)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorlib-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+                <h2><span>Sản phẩm liên quan</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.ListProductVm)
+            {
+                var url = "/" + item.Alias + ".p-" + item.ID + ".html";
+                <div class="col-md-3 text-center">
+                    <div class="product-entry">
+                        <div class="product-img" style="background-image: url(@item.ThumbnailImage);">
+                            @if (item.PromotionPrice.HasValue == true)
+                            {
+                                <p class="tag"><span class="sale">Sale</span></p>
+                            }
+                            <div class="cart">
+                                <p>
+                                    <span><a href="@url"><i class="icon-eye"></i>Xem</a></span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="desc">
+                            <h3><a href="@url">@item.Name</a></h3>
+                            @if (item.PromotionPrice.HasValue == true)
+                            {
+                                <p class="price"><span>@item.PromotionPrice</span> <span class="sale">@item.Price@item.Unit</span> </p>
+                            }
+                            else
+                            {
+                                <p class="price"><span>@item.Price</span></p>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
