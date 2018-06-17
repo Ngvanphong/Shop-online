@@ -91,7 +91,10 @@ namespace ShopOnline.Service
 
         public IEnumerable<Post> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            return this._postRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
+            IEnumerable<Post> listPost = _postRepository.GetMulti(x=>x.Status==true).OrderByDescending(x => x.UpdatedDate);
+            totalRow = listPost.Count();
+            listPost = listPost.Skip((page - 1) * pageSize).Take(pageSize);
+            return listPost;
         }
 
         public IEnumerable<Post> GetByCategoryPaging(int id, int page, int pageSize, out int totalRow)

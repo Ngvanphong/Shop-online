@@ -21,15 +21,12 @@ namespace ShopOnline.Web.Controllers
             this._postCategoryService = postCategoryService;
         }
         // GET: Post
-        public ActionResult Index(int id, int page=1)
+        public ActionResult Index(int page=1)
         {
-            int pageSize = 2;
+            int pageSize = 4;
             int totalRow = 0;
-
-            PostCategory postCategoryDb = _postCategoryService.GetByID(id);
-            PostCategoryViewModel postCategoryVm = Mapper.Map<PostCategoryViewModel>(postCategoryDb);
-            ViewBag.Category = postCategoryVm;
-            IEnumerable<Post> listPostDb = _postService.GetByCategoryPaging(id, page, pageSize, out totalRow);
+            ViewBag.CategoryPost =Mapper.Map<PostCategoryViewModel>(_postCategoryService.GetAll().SingleOrDefault());
+            IEnumerable<Post> listPostDb = _postService.GetAllPaging(page, pageSize, out totalRow);
             IEnumerable<PostViewModel> listPostVm = Mapper.Map<IEnumerable<PostViewModel>>(listPostDb);
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
             PaginationClient<PostViewModel> pagination = new PaginationClient<PostViewModel>()

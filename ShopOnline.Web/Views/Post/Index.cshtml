@@ -1,6 +1,6 @@
 ﻿@model ShopOnline.Web.Infrastructure.Core.PaginationClient<ShopOnline.Web.Models.PostViewModel>
 @{
-    var Category = (ShopOnline.Web.Models.PostCategoryViewModel)ViewBag.Category;
+    var Category = (ShopOnline.Web.Models.PostCategoryViewModel)ViewBag.CategoryPost;
     var pageIndex = Model.PageIndex;
     ViewBag.Title = pageIndex == 1 ? Category.Name : Category.Name+"-trang="+pageIndex;
     ViewBag.MetaKeyword = pageIndex==1? Category.MetaKeyword: Category.MetaKeyword+"-trang="+pageIndex;
@@ -19,14 +19,14 @@
             <!-- *** LEFT COLUMN ***
             _________________________________________________________ -->
 
-            <div class="col-sm-9 col-md-9" id="blog-listing">
+            <div class="col-md-offset-3 col-md-9" id="blog-listing">
 
                 <ul class="breadcrumb">
 
                     <li>
                         <a href="/index.html">Home</a>
                     </li>
-                    <li>@Category.Name</li>
+                    <li>Tin tức</li>
                 </ul>
                 @if (Model.Count > 0)
                 {
