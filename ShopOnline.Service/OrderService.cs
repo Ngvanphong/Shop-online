@@ -19,7 +19,7 @@ namespace ShopOnline.Service
 
         OrderDetail CreateDetail(OrderDetail order);
 
-        void DeleteDetail(int productId, int orderId, int sizeId);
+        void DeleteDetail(int productId, int orderId);
         void DeleteOrder(int id);
 
         void UpdateStatus(int orderId);
@@ -52,9 +52,9 @@ namespace ShopOnline.Service
             return _orderDetailRepository.Add(order);
         }
 
-        public void DeleteDetail(int productId, int orderId, int sizeId)
+        public void DeleteDetail(int productId, int orderId)
         {
-            OrderDetail orderDetail = _orderDetailRepository.GetSingleByCondition(x => x.ProductID == productId && x.OrderID == orderId && x.SizeId == sizeId);
+            OrderDetail orderDetail = _orderDetailRepository.GetSingleByCondition(x => x.ProductID == productId && x.OrderID == orderId);
             _orderDetailRepository.Delete(orderDetail);
         }
 
@@ -95,7 +95,7 @@ namespace ShopOnline.Service
 
         public IEnumerable<OrderDetail> GetOrderDetails(int orderId)
         {
-            return _orderDetailRepository.GetMulti(x => x.OrderID == orderId, new string[] { "Order", "Size", "Product" }).ToList();
+            return _orderDetailRepository.GetMulti(x => x.OrderID == orderId, new string[] { "Order", "Product" }).ToList();
         }
 
         public void Save()

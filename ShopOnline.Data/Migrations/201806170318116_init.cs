@@ -3,7 +3,7 @@ namespace ShopOnline.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class sql2012 : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -75,17 +75,14 @@ namespace ShopOnline.Data.Migrations
                     {
                         OrderID = c.Int(nullable: false),
                         ProductID = c.Int(nullable: false),
-                        SizeId = c.Int(nullable: false),
                         Quantity = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
-                .PrimaryKey(t => new { t.OrderID, t.ProductID, t.SizeId })
+                .PrimaryKey(t => new { t.OrderID, t.ProductID })
                 .ForeignKey("dbo.Order", t => t.OrderID, cascadeDelete: true)
                 .ForeignKey("dbo.Products", t => t.ProductID, cascadeDelete: true)
-                .ForeignKey("dbo.Sizes", t => t.SizeId, cascadeDelete: true)
                 .Index(t => t.OrderID)
-                .Index(t => t.ProductID)
-                .Index(t => t.SizeId);
+                .Index(t => t.ProductID);
             
             CreateTable(
                 "dbo.Order",
@@ -126,6 +123,7 @@ namespace ShopOnline.Data.Migrations
                         HotFlag = c.Boolean(),
                         ViewCount = c.Int(),
                         Tags = c.String(maxLength: 256),
+                        Unit = c.String(maxLength: 50),
                         MetaKeyword = c.String(maxLength: 250),
                         MetaDiscription = c.String(maxLength: 250),
                         CreateDate = c.DateTime(),
@@ -244,15 +242,6 @@ namespace ShopOnline.Data.Migrations
                         UpdatedDate = c.DateTime(),
                         UpdatedBy = c.String(maxLength: 250),
                         Status = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.Sizes",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(maxLength: 250),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -379,20 +368,6 @@ namespace ShopOnline.Data.Migrations
                 .Index(t => t.ProductId);
             
             CreateTable(
-                "dbo.ProductQuantities",
-                c => new
-                    {
-                        ProductId = c.Int(nullable: false),
-                        SizeId = c.Int(nullable: false),
-                        Quantity = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.ProductId, t.SizeId })
-                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
-                .ForeignKey("dbo.Sizes", t => t.SizeId, cascadeDelete: true)
-                .Index(t => t.ProductId)
-                .Index(t => t.SizeId);
-            
-            CreateTable(
                 "dbo.Slides",
                 c => new
                     {
@@ -437,8 +412,6 @@ namespace ShopOnline.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AppUserRoles", "IdentityRole_Id", "dbo.AppRoles");
-            DropForeignKey("dbo.ProductQuantities", "SizeId", "dbo.Sizes");
-            DropForeignKey("dbo.ProductQuantities", "ProductId", "dbo.Products");
             DropForeignKey("dbo.ProductImages", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Permissions", "FunctionId", "dbo.Functions");
             DropForeignKey("dbo.Permissions", "RoleId", "dbo.AppRoles");
@@ -447,7 +420,6 @@ namespace ShopOnline.Data.Migrations
             DropForeignKey("dbo.AppUserRoles", "AppUser_Id", "dbo.AppUsers");
             DropForeignKey("dbo.AppUserLogins", "AppUser_Id", "dbo.AppUsers");
             DropForeignKey("dbo.AppUserClaims", "AppUser_Id", "dbo.AppUsers");
-            DropForeignKey("dbo.OrderDetails", "SizeId", "dbo.Sizes");
             DropForeignKey("dbo.OrderDetails", "ProductID", "dbo.Products");
             DropForeignKey("dbo.ProductTags", "TagID", "dbo.Tags");
             DropForeignKey("dbo.PostTags", "TagID", "dbo.Tags");
@@ -457,8 +429,6 @@ namespace ShopOnline.Data.Migrations
             DropForeignKey("dbo.Products", "CategoryID", "dbo.ProductCategories");
             DropForeignKey("dbo.OrderDetails", "OrderID", "dbo.Order");
             DropForeignKey("dbo.Functions", "ParentId", "dbo.Functions");
-            DropIndex("dbo.ProductQuantities", new[] { "SizeId" });
-            DropIndex("dbo.ProductQuantities", new[] { "ProductId" });
             DropIndex("dbo.ProductImages", new[] { "ProductId" });
             DropIndex("dbo.Permissions", new[] { "FunctionId" });
             DropIndex("dbo.Permissions", new[] { "RoleId" });
@@ -472,7 +442,6 @@ namespace ShopOnline.Data.Migrations
             DropIndex("dbo.ProductTags", new[] { "TagID" });
             DropIndex("dbo.ProductTags", new[] { "ProductID" });
             DropIndex("dbo.Products", new[] { "CategoryID" });
-            DropIndex("dbo.OrderDetails", new[] { "SizeId" });
             DropIndex("dbo.OrderDetails", new[] { "ProductID" });
             DropIndex("dbo.OrderDetails", new[] { "OrderID" });
             DropIndex("dbo.Functions", new[] { "ParentId" });
@@ -481,7 +450,6 @@ namespace ShopOnline.Data.Migrations
             DropTable("dbo.SystemConfigs");
             DropTable("dbo.SupportOnlines");
             DropTable("dbo.Slides");
-            DropTable("dbo.ProductQuantities");
             DropTable("dbo.ProductImages");
             DropTable("dbo.PostImages");
             DropTable("dbo.Permissions");
@@ -490,7 +458,6 @@ namespace ShopOnline.Data.Migrations
             DropTable("dbo.AppUserClaims");
             DropTable("dbo.AppUsers");
             DropTable("dbo.OrderUserAnnoucements");
-            DropTable("dbo.Sizes");
             DropTable("dbo.PostCategories");
             DropTable("dbo.Posts");
             DropTable("dbo.PostTags");

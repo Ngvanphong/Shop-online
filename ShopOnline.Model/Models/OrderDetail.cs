@@ -20,9 +20,7 @@ namespace ShopOnline.Model.Models
         public int Quantity { set; get; }
 
         public decimal Price { set; get; }
-        [Key]
-        [Column(Order = 3)]
-        public int SizeId { get; set; }
+   
         [ForeignKey("OrderID")]
         public virtual Order Order { set; get; }
         [ForeignKey("ProductID")]

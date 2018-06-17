@@ -88,8 +88,7 @@ namespace ShopOnline.Web.Api
                          {
                              ProductID = item.ProductID,
                              Quantity = item.Quantity,
-                             Price = item.Price,
-                             SizeId = item.SizeId,
+                             Price = item.Price,                          
                          });
                      }
                      orderDb.OrderDetails = listOrderDetails;

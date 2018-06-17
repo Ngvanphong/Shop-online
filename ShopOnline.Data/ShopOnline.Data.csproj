@@ -60,17 +60,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositotyBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201805060108371_sql2012.cs" />
-    <Compile Include="Migrations\201805060108371_sql2012.Designer.cs">
-      <DependentUpon>201805060108371_sql2012.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806140301039_changeunit.cs" />
-    <Compile Include="Migrations\201806140301039_changeunit.Designer.cs">
-      <DependentUpon>201806140301039_changeunit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806141151327_changequantity.cs" />
-    <Compile Include="Migrations\201806141151327_changequantity.Designer.cs">
-      <DependentUpon>201806141151327_changequantity.cs</DependentUpon>
+    <Compile Include="Migrations\201806170318116_init.cs" />
+    <Compile Include="Migrations\201806170318116_init.Designer.cs">
+      <DependentUpon>201806170318116_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,17 +96,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805060108371_sql2012.resx">
-      <DependentUpon>201805060108371_sql2012.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806140301039_changeunit.resx">
-      <DependentUpon>201806140301039_changeunit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806141151327_changequantity.resx">
-      <DependentUpon>201806141151327_changequantity.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ShopOnline.Common\ShopOnline.Common.csproj">
       <Project>{54b138a6-83ba-4ac2-baa6-7652df660d9e}</Project>
       <Name>ShopOnline.Common</Name>
@@ -123,6 +104,11 @@
       <Project>{fe353553-4360-4384-bd5e-75ba6f51de64}</Project>
       <Name>ShopOnline.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806170318116_init.resx">
+      <DependentUpon>201806170318116_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

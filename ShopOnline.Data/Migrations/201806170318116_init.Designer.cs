@@ -7,13 +7,13 @@ namespace ShopOnline.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class changeunit : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changeunit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806140301039_changeunit"; }
+            get { return "201806170318116_init"; }
         }
         
         string IMigrationMetadata.Source
