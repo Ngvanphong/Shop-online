@@ -28,13 +28,15 @@ namespace ShopOnline.Web
              namespaces: new string[] { "ShopOnline.Web.Controllers" }
         );
 
+
             routes.MapRoute(
-         name: "Register",
-         url: "register.html",
-         defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional },
-          namespaces: new string[] { "ShopOnline.Web.Controllers" }
-     );
-     
+          name: "About",
+          url: "about.html",
+          defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+           namespaces: new string[] { "ShopOnline.Web.Controllers" }
+      );
+
+
             routes.MapRoute(
           name: "Contact",
           url: "contact.html",
@@ -47,25 +49,8 @@ namespace ShopOnline.Web
           defaults: new { controller = "Product", action = "Tag", tagId = UrlParameter.Optional },
            namespaces: new string[] { "ShopOnline.Web.Controllers" }
       );
-            routes.MapRoute(
-            name: "Promotion Product",
-            url: "promotion-product.html",
-            defaults: new { controller = "Product", action = "PromotionProduct", id = UrlParameter.Optional },
-             namespaces: new string[] { "ShopOnline.Web.Controllers" }
-        );
-            routes.MapRoute(
-             name: "Hot Product",
-             url: "hotproduct.html",
-             defaults: new { controller = "Product", action = "HotProduct", id = UrlParameter.Optional },
-              namespaces: new string[] { "ShopOnline.Web.Controllers" }
-         );
-
-            routes.MapRoute(
-              name: "Search Product",
-              url: "search.html",
-              defaults: new { controller = "Product", action = "SearchProduct", id = UrlParameter.Optional },
-               namespaces: new string[] { "ShopOnline.Web.Controllers" }
-          );
+          
+   
             routes.MapRoute(
                name: "Product Caterory",
                url: "{alias}.pc-{id}.html",
@@ -82,7 +67,7 @@ namespace ShopOnline.Web
 
             routes.MapRoute(
                 name: "Post Category",
-                url: "{alias}.blog-{id}.html",
+                url: "blog.html",
                 defaults: new { controller = "Post", action = "Index", id = UrlParameter.Optional },
                  namespaces: new string[] { "ShopOnline.Web.Controllers" }
             );

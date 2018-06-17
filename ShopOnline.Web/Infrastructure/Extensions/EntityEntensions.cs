@@ -58,6 +58,13 @@ namespace ShopOnline.Web.Infrastructure.Extensions
             postImage.Caption = postImageVm.Caption;
         }
 
+        public static void UpdateAbout(this About about, AboutViewModel aboutVm)
+        {
+            about.ID = aboutVm.ID;
+            about.Content = aboutVm.Content;
+           
+        }
+
         public static void UpdateProduct(this Product product, ProductViewModel productVm)
         {
 
