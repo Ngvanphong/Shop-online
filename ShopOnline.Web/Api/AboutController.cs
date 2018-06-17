@@ -25,6 +25,7 @@ namespace ShopOnline.Web.Api
         }
 
         [Route("get")]
+        [HttpGet]
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             Func<HttpResponseMessage> func = () =>
@@ -38,6 +39,7 @@ namespace ShopOnline.Web.Api
         }
 
         [Route("add")]
+        [HttpPost]
         public HttpResponseMessage Create(HttpRequestMessage request, AboutViewModel aboutVm)
         {
             return CreateHttpResponse(request, () =>
@@ -58,6 +60,7 @@ namespace ShopOnline.Web.Api
         }
 
         [Route("update")]
+        [HttpPut]
         public HttpResponseMessage Update(HttpRequestMessage request, AboutViewModel aboutVm)
         {
             return CreateHttpResponse(request, () =>
@@ -78,6 +81,7 @@ namespace ShopOnline.Web.Api
         }
 
         [Route("delete")]
+        [HttpDelete]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>

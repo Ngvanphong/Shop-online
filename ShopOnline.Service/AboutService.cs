@@ -24,7 +24,8 @@ namespace ShopOnline.Service
         IUnitOfWork _unitOfWork;
         public AboutService(IAboutRepository aboutRepository, IUnitOfWork unitOfWowk)
         {
-            this._aboutRepository = aboutRepository;          
+            this._aboutRepository = aboutRepository;
+            this._unitOfWork = unitOfWowk;
         }
         public void Create(About about)
         {
@@ -39,7 +40,8 @@ namespace ShopOnline.Service
 
         public About GetSingle()
         {
-            return _aboutRepository.GetAll().SingleOrDefault();
+              return  _aboutRepository.GetAll().SingleOrDefault();
+
         }
 
         public void SaveChange()
