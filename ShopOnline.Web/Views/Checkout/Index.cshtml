@@ -7,15 +7,11 @@
     Layout = "~/Views/Shared/Layouts.cshtml";
 }
 @section JavaScriptLayout {
-
-    @Scripts.Render("~/js/shoppingcart")
+    <script src="~/Assets/client/js/shoppingCart.js"></script>
 }
-
 <div id="all ">
-
     <div id="content">
         <div class="container">
-
             <div class="col-md-9">
                 <ul class="breadcrumb">
                     <li>
@@ -24,13 +20,10 @@
                     <li>Thanh toán</li>
                 </ul>
             </div>
-
             <div class="col-md-9" id="checkout">
-
                 <div class="box">
                     <form id="validationOrder">
                         <h3>Thanh toán</h3>
-
                         <div class="content">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -47,7 +40,6 @@
                                 </div>
                             </div>
                             <!-- /.row -->
-
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -74,7 +66,6 @@
                                             <option value="702">Khu vực khác</option>
                                         </select>
                                     </div>
-
                                 </div>
                                 <div id="proviceDisplay" style="display:none" class="col-sm-6">
                                     <div class="form-group">
@@ -89,11 +80,9 @@
                                     <label id="taxtransfer"></label>
                                 </div>
                             </div>
-
                             <!-- /.row -->
                             <!-- /.row -->
                         </div>
-
                         <div class="box-footer">
                             <div class="pull-left">
                                 <a href="/basket.html" class="btn btn-default"><i class="fa fa-chevron-left"></i>Quay lại giỏ hàng</a>
@@ -108,13 +97,10 @@
                 </div>
                 <!-- /.box -->
 
-
             </div>
             <!-- /.col-md-9 -->
             <!-- /.col-md-3 -->
-
         </div>
         <!-- /.container -->
     </div>
 </div>
-

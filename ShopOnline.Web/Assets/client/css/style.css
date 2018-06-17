@@ -2136,3 +2136,7 @@ input[type="text"] {
     border-radius: 4px;
 
 }
+
+.error {
+   color:red;
+}

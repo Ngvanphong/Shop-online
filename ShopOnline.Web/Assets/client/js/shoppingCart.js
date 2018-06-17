@@ -34,69 +34,69 @@
 
      
 
-        //$("#validationOrder").validate({
-        //    rules: {
-        //        name: "required",
-        //        address: "required",
-        //        email: {
-        //            email: true,
-        //        },
-        //        mobile: "required",
-        //        CitySelectList: "required",
+        $("#validationOrder").validate({
+            rules: {
+                name: "required",
+                address: "required",
+                email: {
+                    email: true,
+                },
+                mobile: "required",
+                CitySelectList: "required",
                
-        //    },
-        //    messages: {
-        //        name: "Bạn phải nhập tên",
-        //        address: "Bạn phải nhập địa chỉ",
-        //        email: {
-        //            email: "Email không đúng"
-        //        },
-        //        mobile: "Bạn phải nhập số điện thoại",
-        //        CitySelectList: "",             
-        //    }
-        //});
+            },
+            messages: {
+                name: "Bạn phải nhập tên",
+                address: "Bạn phải nhập địa chỉ",
+                email: {
+                    email: "Email không đúng"
+                },
+                mobile: "Bạn phải nhập số điện thoại",
+                CitySelectList: "",             
+            }
+        });
 
-        //$("#CitySelectList").off('change').on('change', function (e) {
-        //    e.preventDefault();
-        //    var province = $("#CitySelectList").val();
-        //    if (province == 701) {
-        //        $("#proviceDisplay").show();
-        //        shoppingCart.loadDistrict(province);
-        //    }
-        //    else {
-        //        $("#proviceDisplay").hide();
-        //        $("#taxtransfer").text("20.000");
-        //    }
+        $("#CitySelectList").off('change').on('change', function (e) {
+            e.preventDefault();
+            var province = $("#CitySelectList").val();
+            if (province == 701) {
+                $("#proviceDisplay").show();
+                shoppingCart.loadDistrict(province);
+            }
+            else {
+                $("#proviceDisplay").hide();
+                $("#taxtransfer").text("20.000");
+            }
 
-        //});
+        });
 
-        //$("#DistrictSelectList").off('change').on('change', function (e) {
-        //    e.preventDefault();
+        $("#DistrictSelectList").off('change').on('change', function (e) {
+            e.preventDefault();
             
-        //    var districtId = $("#DistrictSelectList").val();
-        //    if (districtId != "") {
-        //        shoppingCart.getTaxForHCM(districtId);
-        //    }
-        //    else {
-        //        $("#taxtransfer").text("14.000");
-        //    }
-        //});
+            var districtId = $("#DistrictSelectList").val();
+            if (districtId != "") {
+                shoppingCart.getTaxForHCM(districtId);
+            }
+            else {
+                $("#taxtransfer").text("14.000");
+            }
+        });
 
-        //$("#createOrder").off('click').on('click', function (e) {
-        //    e.preventDefault();
-        //    $.ajax({
-        //        url: "/Checkout/CreateOrder",
-        //        type: "POST",
-        //        dataType: "Json",
-        //        success: function (res) {
-        //            if (res.status) {
-        //                alert("Cảm ơn quý khách đã mua hàng");                     
-        //                window.location.href = "/index.html";
-        //            }
-        //        }
-        //    })
+        $("#createOrder").off('click').on('click', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/Checkout/CreateOrder",
+                type: "POST",
+                dataType: "Json",
+                success: function (res) {
+                    if (res.status) {
+                        alert("Cảm ơn quý khách đã mua hàng");                     
+                        window.location.href = "/index.html";
+                    }
+                }
+            })
 
-        //});
+        });
        
 
         $(".txtKeyupQuantity").off('change').on('change', function (e) {
@@ -240,80 +240,78 @@
 
     },
 
-    //getTaxForHCM: function (districtId) {
-    //    $.ajax({
-    //        url: "/Checkout/GetTaxHCM",
-    //        type: "POST",
-    //        dataType: "Json",
-    //        data: {
-    //            districtId:districtId
-    //        },
-    //        success: function (res) {
-    //            if (res.status) {
-    //                var taxTransfer = res.data;
-    //                $("#taxtransfer").text(taxTransfer);
-    //            }
-    //        }
+    getTaxForHCM: function (districtId) {
+        $.ajax({
+            url: "/Checkout/GetTaxHCM",
+            type: "POST",
+            dataType: "Json",
+            data: {
+                districtId:districtId
+            },
+            success: function (res) {
+                if (res.status) {
+                    var taxTransfer = res.data;
+                    $("#taxtransfer").text(taxTransfer);
+                }
+            }
 
-    //    });
-    //},
+        });
+    },
 
-    //gotoComfirm: function () {
-    //    var taxPrice = 0;
-    //    var orderVm = {};
-    //    taxPrice = $("#taxtransfer").text();
-    //    var taxTransfer = parseInt(taxPrice.slice(0, taxPrice.indexOf('.')));
-    //    orderVm = {
-    //        CustomerName:$("#name").val(),
-    //        CustomerAddress: $("#address").val(),
-    //        CustomerMobile: $("#mobile").val(),
-    //        CustomerEmail: $("#email").val(),          
-    //    };
+    gotoComfirm: function () {
+        var taxPrice = 0;
+        var orderVm = {};
+        taxPrice = $("#taxtransfer").text();
+        var taxTransfer = parseInt(taxPrice.slice(0, taxPrice.indexOf('.')));
+        orderVm = {
+            CustomerName:$("#name").val(),
+            CustomerAddress: $("#address").val(),
+            CustomerMobile: $("#mobile").val(),
+            CustomerEmail: $("#email").val(),          
+        };
 
-    //    $.ajax({
-    //        url: "/Checkout/GotoComfirm",
-    //        type: "POST",
-    //        dataType: "Json",
-    //        data: {
-    //            totalPrice:taxTransfer,
-    //            orderVm: JSON.stringify(orderVm),
-    //        },
-    //        success: function (res) {
-    //            if (res.status) {
-    //                window.location.href = "/overview.html";
-    //            }
-    //        }
+        $.ajax({
+            url: "/Checkout/GotoComfirm",
+            type: "POST",
+            dataType: "Json",
+            data: {
+                totalPrice:taxTransfer,
+                orderVm: JSON.stringify(orderVm),
+            },
+            success: function (res) {
+                if (res.status) {
+                    window.location.href = "/overview.html";
+                }
+            }
 
-    //    });
+        });
 
-    //},
+    },
 
-    //loadDistrict: function (provinceId) {
-    //    $.ajax({
-    //        url: "/Checkout/LoadDistrict",
-    //        type: "POST",
-    //        dataType: "Json",
-    //        data: {
-    //            provinceId:provinceId,
-    //        },
-    //        success: function (res) {
-    //            if (res.status) {                
-    //                var html = '<option value="">Chọn quận/huyện</option>';
-    //                var data = res.data;
-    //                $.each(data, function (i, item) {
+    loadDistrict: function (provinceId) {
+        $.ajax({
+            url: "/Checkout/LoadDistrict",
+            type: "POST",
+            dataType: "Json",
+            data: {
+                provinceId:provinceId,
+            },
+            success: function (res) {
+                if (res.status) {                
+                    var html = '<option value="">Chọn quận/huyện</option>';
+                    var data = res.data;
+                    $.each(data, function (i, item) {
 
-    //                    html += '<option value="'+item.ID+'">'+item.Name+'</option>'
-    //                });
-    //                $("#DistrictSelectList").html(html);
-    //            }
-    //        }
+                        html += '<option value="'+item.ID+'">'+item.Name+'</option>'
+                    });
+                    $("#DistrictSelectList").html(html);
+                }
+            }
 
 
-    //    });
+        });
 
-    //}
-
-   
+    }
 
 
 }
