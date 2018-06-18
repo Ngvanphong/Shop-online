@@ -75,7 +75,7 @@
                                 <div class="thumb-nail">
                                     @foreach (var item in Model.ListProductImageVm)
                                     {
-                                        <a href="@item.Path" class="thumb thumb-img" style="background-image: url(@item.Path);"></a>
+                                        <a href="@item.Path" class="thumb thumb-img" style="background-image: url(@item.Path);margin-left:0px"></a>
                                     }
                                 </div>
                             </div>
@@ -106,12 +106,12 @@
                                     </p>
 
                                 </div>
+                                <p>@Model.ProductVm.Description</p>
                                 <div class="size-wrap">
                                     <p class="size-desc">
                                         Số lượng
                                     </p>
                                 </div>
-                                <p>@Model.ProductVm.Description</p>
                                 <div class="row row-pb-sm">
                                     <div class="col-md-4">
                                         <div class="input-group">

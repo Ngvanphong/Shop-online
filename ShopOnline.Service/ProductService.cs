@@ -207,7 +207,7 @@ namespace ShopOnline.Service
 
         public IEnumerable<Product> GetHotProduct()
         {
-            IEnumerable<Product> listHotProduct = _productRepository.GetMulti(x => x.Status == true && x.HotFlag == true).OrderByDescending(x => x.UpdatedDate).Take(4);
+            IEnumerable<Product> listHotProduct = _productRepository.GetMulti(x => x.Status == true && x.HotFlag == true).OrderByDescending(x => x.UpdatedDate).Take(8);
                 
             return listHotProduct;
         }
