@@ -58,9 +58,9 @@
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>
             {
-                new ProductCategory(){Name="Áo sơ mi", Alias="Ao-so-mi", Status=true },
-                new ProductCategory(){Name="Áo thun", Alias="Ao-thun", Status=true },
-                new ProductCategory(){Name="Đầm váy", Alias="Dam-vay", Status=true },
+                new ProductCategory(){Name="Dây điện", Alias="day-dien", Status=true },
+                new ProductCategory(){Name="Cáp quang", Alias="cap-quang", Status=true },
+                new ProductCategory(){Name="Xi măng", Alias="xi-mang", Status=true },
             };
                 dbContext.ProductCategories.AddRange(listProductCategory);
                 dbContext.SaveChanges();
@@ -88,6 +88,7 @@
                     new Function() {ID = "POST_CATEGORY",Name = "Danh mục",ParentId = "CONTENT",DisplayOrder = 1,Status = true,URL = "/main/post-category/index",IconCss = "fa-table"  },
                     new Function() {ID = "POST",Name = "Bài viết",ParentId = "CONTENT",DisplayOrder = 2,Status = true,URL = "/main/post/index",IconCss = "fa-table"  },
                      new Function() {ID = "SLIDE",Name = "Slide",ParentId = "CONTENT",DisplayOrder = 3,Status = true,URL = "/main/slide/index",IconCss = "fa-table"  },
+                     new Function() {ID = "ABOUT",Name = "Giới thiệu",ParentId = "CONTENT",DisplayOrder = 5,Status = true,URL = "/main/about/index",IconCss = "fa-table"  },
 
 
                     new Function() {ID = "UTILITY",Name = "Tiện ích",ParentId = null,DisplayOrder = 4,Status = true,URL = "/",IconCss = "fa-clone"  },
