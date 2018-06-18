@@ -8,31 +8,21 @@
     var totalPayment = (decimal)ViewBag.totalPrice;
     var transferTax = (string)ViewBag.transferTax;
 }
-
 @section JavaScriptLayout {
-    <script src="~/Assets/client/js/shoppingCart.js"></script>
-    
+    @Scripts.Render("~/js/shoppingcart")
+
 }
-
-
 <div id="all">
-
     <div id="content">
         <div class="container">
-
             <div class="col-md-12">
-
                 <ul class="breadcrumb">
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-
                     <li>Xác nhận</li>
-
                 </ul>
-
             </div>
-
 
             <div class="col-md-12" id="customer-order">
                 <div class="box">
@@ -65,7 +55,6 @@
                                 </tr>
                             </tfoot>
                         </table>
-
                     </div>
                     <!-- /.table-responsive -->
                     <div class="box-footer">
@@ -76,15 +65,12 @@
                             <a class="btn btn-primary" id="createOrder"> Xác nhận <i class="fa fa-chevron-right"></i></a>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
         <!-- /.container -->
     </div>
 </div>
-
 <script id="tmpShoppingContent" type="x-tmpl-mustache">
     <tr>
         <td>
@@ -97,8 +83,6 @@
         <td>{{PriceF}}</td>
         <td>{{PromotionPrice}}</td>
         <td id="amount_{{ProductId}}">{{Amount}}</td>
-
     </tr>
 </script>
-
 

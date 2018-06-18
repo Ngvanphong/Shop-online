@@ -23,7 +23,8 @@
     <meta name="twitter:card" content="" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-    <!-- Animate.css -->
+    @Styles.Render("~/css/base")
+    @*<!-- Animate.css -->
     <link rel="stylesheet" href="~/Assets/client/css/animate.css">
     <!-- Icomoon Icon Fonts-->
     <link rel="stylesheet" href="~/Assets/client/css/icomoon.css">
@@ -42,7 +43,7 @@
     <!-- Flaticons  -->
     <link rel="stylesheet" href="~/Assets/client/fonts/flaticon/font/flaticon.css">
     <!-- Theme style  -->
-    <link rel="stylesheet" href="~/Assets/client/css/style.css">
+    <link rel="stylesheet" href="~/Assets/client/css/style.css">*@
     <!-- Modernizr JS -->
     <script src="~/Assets/client/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
@@ -61,7 +62,7 @@
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
     </div>
-    <!-- jQuery -->
+    @*<!-- jQuery -->
     <script src="~/Assets/client/js/jquery.min.js"></script>
     <!-- jQuery Easing -->
     <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -87,7 +88,10 @@
     <!-- Stellar Parallax -->
     <script src="~/Assets/client/js/jquery.stellar.min.js"></script>
     <!-- Main -->
-    <script src="~/Assets/client/js/main.js"></script>
+    <script src="~/Assets/client/js/main.js"></script>*@
+
+    @Scripts.Render("~/js/jquery")
+    @Scripts.Render("~/js/plugins")
     @RenderSection("JavaScriptLayout", required: false)
 </body>
 </html>

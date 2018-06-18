@@ -4,7 +4,7 @@
     {
         public const string ProductTag = "product";
         public const string PostTag = "post";
-        public const int PageSize = 1;
+        public const int PageSize = 12;
         public const int PageDisplay = 4;
         public const string SesstionCart = "ShoppingCart";
         public const string SesstionOrder = "OrderSession";

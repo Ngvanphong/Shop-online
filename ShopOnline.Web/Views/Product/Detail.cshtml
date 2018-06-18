@@ -10,7 +10,7 @@
     var categoryUrl = "/" + productCategory.Alias + ".pc-" + productCategory.ID + ".html";
 }
 @section JavaScriptLayout {
-    <script src="~/Assets/client/js/shoppingCart.js"></script>
+    @Scripts.Render("~/js/shoppingcart")
     <script src="~/Assets/client/js/changeImage.js"></script>
     <script>
         $(document).ready(function () {
@@ -105,7 +105,6 @@
                                         }
                                     </p>
 
-
                                 </div>
                                 <div class="size-wrap">
                                     <p class="size-desc">
@@ -155,7 +154,6 @@
         </div>
     </div>
 </div>
-
 <div class="colorlib-shop">
     <div class="container">
         <div class="row">
@@ -190,17 +188,12 @@
                             {
                                 <p class="price"><span>@item.Price</span></p>
                             }
-
                         </div>
                     </div>
                 </div>
             }
-
         </div>
     </div>
 </div>
-
-
-
 
 
