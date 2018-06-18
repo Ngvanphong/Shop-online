@@ -571,13 +571,13 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\OverViewResult.cshtml" />
     <Content Include="Views\Shared\CategoryHeader.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\admin\" />
     <Folder Include="Scripts\plugins\" />
     <Folder Include="Scripts\spa\" />
-    <Folder Include="Views\About\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
