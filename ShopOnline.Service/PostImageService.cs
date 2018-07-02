@@ -46,7 +46,7 @@ namespace ShopOnline.Service
 
         public IEnumerable<PostImage> getAllByPostId(string postId)
         {
-          return  _postImageRepository.GetMulti(x => x.PostId == postId);
+          return  _postImageRepository.GetMulti(x => x.PostId == postId).OrderByDescending(x=>x.ID);
         }
 
         public PostImage GetById(int id)
