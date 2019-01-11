@@ -60,7 +60,7 @@
 <!-- /.container -->
 <div class="colorlib-shop">
     <div class="container">
-        <div class="row row-pb-lg">
+        <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="product-detail-wrap">
                     <div class="row">
@@ -80,17 +80,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7" style="float:left">
                             <div class="desc">
                                 <h3>@Model.ProductVm.Name</h3>
                                 <p class="price">
                                     @if (Model.ProductVm.PromotionPrice.HasValue == true)
                                     {
-                                        <span>@Model.ProductVm.PromotionPrice@Model.ProductVm.Unit</span>
+                                        <span>Giá bán: @Model.ProductVm.PromotionPrice@Model.ProductVm.Unit</span>
                                     }
                                     else
                                     {
-                                        <span>@Model.ProductVm.Price@Model.ProductVm.Unit</span>
+                                        <span>Giá bán: @Model.ProductVm.Price@Model.ProductVm.Unit</span>
                                     }
                                 </p>
                                 <div class="size-wrap">
@@ -137,7 +137,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1" style="padding-top:10px">
                 <div class="row">
                     <div class="col-md-12 tabulation">
                         <ul class="nav nav-tabs">
