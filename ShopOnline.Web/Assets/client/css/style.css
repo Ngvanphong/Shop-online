@@ -428,7 +428,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 @media screen and (max-width: 768px) {
     #colorlib-hero .flexslider .slider-text > .slider-text-inner .head-2 {
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 500;
         margin-bottom: 10px;
         letter-spacing: 3px;
@@ -442,7 +442,7 @@ h1, h2, h3, h4, h5, h6, figure {
     }
     @media screen and (max-width: 768px) {
         #colorlib-hero .flexslider .slider-text > .slider-text-inner .head-3 {
-            font-size: 20px;
+            font-size: 15px;
             font-weight: 100;
             margin-bottom: 5px;
         }
@@ -456,6 +456,13 @@ h1, h2, h3, h4, h5, h6, figure {
             font-weight: 100;
             font-size: 20px;
             color: gray;
+        }
+        @media screen and (max-width: 768px) {
+            #colorlib-hero .flexslider .slider-text > .slider-text-inner .category span {
+                font-weight: 100;
+                font-size: 15px;
+                color: gray;
+            }
         }
 
     #colorlib-hero .flexslider .slider-text > .slider-text-inner .btn {
