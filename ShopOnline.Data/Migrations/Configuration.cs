@@ -34,20 +34,20 @@
             {
                 var user = new AppUser()
                 {
-                    UserName = "ngvanphong",
-                    Email = "ngvanphong92@gmail.com",
+                    UserName = "vanphong",
+                    Email = "ngvanphong2012@gmail.com",
                     EmailConfirmed = true,
                     BirthDay = DateTime.Now,
                     FullName = "Nguyễn Văn Phong",
                 };
-                manager.Create(user, "ngvanphong2012");
+                manager.Create(user, "ngvanphong201292");
                 if (!roleManager.Roles.Any())
                 {
                     roleManager.Create(new AppRole { Name = "Admin", Description = "Admin" });
                     roleManager.Create(new AppRole { Name = "User", Description = "User" });
                 };
 
-                var adminUser = manager.FindByEmail("ngvanphong92@gmail.com");
+                var adminUser = manager.FindByEmail("ngvanphong2012@gmail.com");
                 manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
             }
         }

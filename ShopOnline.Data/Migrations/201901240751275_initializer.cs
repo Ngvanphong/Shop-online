@@ -3,10 +3,19 @@ namespace ShopOnline.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init : DbMigration
+    public partial class initializer : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Abouts",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Content = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
             CreateTable(
                 "dbo.AppRoles",
                 c => new
@@ -472,6 +481,7 @@ namespace ShopOnline.Data.Migrations
             DropTable("dbo.Erros");
             DropTable("dbo.AppUserRoles");
             DropTable("dbo.AppRoles");
+            DropTable("dbo.Abouts");
         }
     }
 }

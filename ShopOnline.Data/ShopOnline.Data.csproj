@@ -60,17 +60,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositotyBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201806170318116_init.cs" />
-    <Compile Include="Migrations\201806170318116_init.Designer.cs">
-      <DependentUpon>201806170318116_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806170952164_addabout.cs" />
-    <Compile Include="Migrations\201806170952164_addabout.Designer.cs">
-      <DependentUpon>201806170952164_addabout.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806171259434_about2.cs" />
-    <Compile Include="Migrations\201806171259434_about2.Designer.cs">
-      <DependentUpon>201806171259434_about2.cs</DependentUpon>
+    <Compile Include="Migrations\201901240751275_initializer.cs" />
+    <Compile Include="Migrations\201901240751275_initializer.Designer.cs">
+      <DependentUpon>201901240751275_initializer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,14 +107,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806170318116_init.resx">
-      <DependentUpon>201806170318116_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806170952164_addabout.resx">
-      <DependentUpon>201806170952164_addabout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806171259434_about2.resx">
-      <DependentUpon>201806171259434_about2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901240751275_initializer.resx">
+      <DependentUpon>201901240751275_initializer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
