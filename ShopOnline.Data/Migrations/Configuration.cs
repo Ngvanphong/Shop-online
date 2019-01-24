@@ -58,9 +58,9 @@
             {
                 List<ProductCategory> listProductCategory = new List<ProductCategory>
             {
-                new ProductCategory(){Name="Dây điện", Alias="day-dien", Status=true },
-                new ProductCategory(){Name="Cáp quang", Alias="cap-quang", Status=true },
-                new ProductCategory(){Name="Xi măng", Alias="xi-mang", Status=true },
+                new ProductCategory(){Name="Bánh trán", Alias="banh-tran", Status=true },
+                new ProductCategory(){Name="Nem chả", Alias="nem-cha", Status=true },
+                new ProductCategory(){Name="Rượu bầu đá", Alias="ruou-bau-da", Status=true },
             };
                 dbContext.ProductCategories.AddRange(listProductCategory);
                 dbContext.SaveChanges();
@@ -94,9 +94,8 @@
                     new Function() {ID = "UTILITY",Name = "Tiện ích",ParentId = null,DisplayOrder = 4,Status = true,URL = "/",IconCss = "fa-clone"  },
                     new Function() {ID = "FOOTER",Name = "Footer",ParentId = "UTILITY",DisplayOrder = 1,Status = true,URL = "/main/footer/index",IconCss = "fa-clone"  },
                     new Function() {ID = "CONTACT",Name = "Liên hệ",ParentId = "UTILITY",DisplayOrder = 2,Status = true,URL = "/main/contact/index",IconCss = "fa-clone"  },
-                     new Function() {ID = "TAG",Name = "Tag",ParentId = "UTILITY",DisplayOrder = 3,Status = true,URL = "/main/tag/index",IconCss = "fa-clone"  },
-                     new Function() {ID = "SIZE",Name = "Size",ParentId = "UTILITY",DisplayOrder = 4,Status = true,URL = "/main/size/index",IconCss = "fa-clone"  },
-                      new Function() {ID = "SYSTEMCONFIG",Name = "Systemconfig",ParentId = "UTILITY",DisplayOrder = 5,Status = true,URL = "/main/systemconfig/index",IconCss = "fa-clone"  },
+                    new Function() {ID = "TAG",Name = "Tag",ParentId = "UTILITY",DisplayOrder = 3,Status = true,URL = "/main/tag/index",IconCss = "fa-clone"  },                
+                    new Function() {ID = "SYSTEMCONFIG",Name = "Systemconfig",ParentId = "UTILITY",DisplayOrder = 4,Status = true,URL = "/main/systemconfig/index",IconCss = "fa-clone"  },
                 });
                 context.SaveChanges();
             }

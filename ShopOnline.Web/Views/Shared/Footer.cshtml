@@ -12,7 +12,7 @@
     <div class="container reposiveFooter">
         <div class="row row-pb-md">
             <div class="col-md-3 colorlib-widget">
-                <h4>Danh mục sản phẩm</h4>
+                <h4>Danh mục chính</h4>
                 <p>
                     <ul class="colorlib-footer-links">
 
@@ -28,12 +28,14 @@
                 <h4>Thông tin</h4>
                 <p>
                     <ul class="colorlib-footer-links">
+                        <li><a href="/basket.html">Giỏ hàng</a></li>
+                        <li><a href="/checkout.html">Thanh toán</a></li>
                         <li><a href="/about.html">Gới thiệu</a></li>
                         <li><a href="/contact.html">Liên hệ</a></li>
                     </ul>
                 </p>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h4>Hỗ trợ trực tuyến</h4>
                 <ul class="colorlib-footer-links">
                     <li>Tên: @Model.supportOnlineVm.Name</li>
@@ -43,7 +45,7 @@
                     <li>Facebook: @Model.supportOnlineVm.Facebook</li>
                 </ul>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <h4>Tag</h4>
                 <ul class="colorlib-footer-links">
                     @foreach (var item in Model.tagVm.Take(9))
@@ -54,22 +56,7 @@
                         </li>
                     }
                 </ul>
-            </div>
-            @if (Model.tagVm.Count() > 9)
-            {
-                <div class="col-md-2">
-                    <h4>Tag</h4>
-                    <ul class="colorlib-footer-links">
-                        @foreach (var item in Model.tagVm.Skip(9).Take(9))
-                        {
-                            var url = "/tag-" + item.ID + ".html";
-                            <li>
-                                <a href="@url">@item.Name</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            }
+            </div>           
         </div>
     </div>
     <div class="copy">
