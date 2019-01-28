@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ShopOnline.Data.Inframestructure;
 using ShopOnline.Data.Reponsitories;
 using ShopOnline.Model.Models;
@@ -51,9 +52,9 @@ namespace ShopOnline.Service
         {
             IEnumerable<ProductCategory> listProductCategory;
             if (!string.IsNullOrEmpty(filter))
-                listProductCategory = _productCategoryRepository.GetMulti(x => x.Name.Contains(filter));
+                listProductCategory = _productCategoryRepository.GetMulti(x => x.Name.Contains(filter)).OrderBy(x=>x.ParentID);
             else
-                listProductCategory = _productCategoryRepository.GetAll();
+                listProductCategory = _productCategoryRepository.GetAll().OrderBy(x => x.ParentID);
             return listProductCategory;
             
         }

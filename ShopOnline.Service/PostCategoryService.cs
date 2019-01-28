@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using ShopOnline.Data.Inframestructure;
 using ShopOnline.Data.Reponsitories;
 using ShopOnline.Model.Models;
@@ -48,7 +49,7 @@ namespace ShopOnline.Service
 
         public IEnumerable<PostCategory> GetAll()
         {
-            return this._postCategoryRepository.GetAll();
+            return this._postCategoryRepository.GetAll().OrderBy(x=>x.ParentID);
         }
 
         public IEnumerable<PostCategory> GetAllByParentID(int parentID)
