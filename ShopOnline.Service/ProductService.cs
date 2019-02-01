@@ -287,7 +287,7 @@ namespace ShopOnline.Service
 
         public IEnumerable<Product> GetTopProductByDay()
         {
-            return _productRepository.GetAll().OrderByDescending(x => x.UpdatedDate).Take(8);
+            return _productRepository.GetAll().OrderByDescending(x => x.CreateDate).Take(8);
         }
     }
 }
