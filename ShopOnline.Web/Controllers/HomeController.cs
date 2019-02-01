@@ -102,7 +102,7 @@ namespace ShopOnline.Web.Controllers
                 }
                 
             }
-            listChild = listChild.OrderBy(x => x.Name).Take(9).ToList();
+            listChild = listChild.OrderBy(x => x.Name).Take(6).ToList();
             IEnumerable<ProductCategoryViewModel> listCategoryVm = Mapper.Map<IEnumerable<ProductCategoryViewModel>>(listChild);
             footVm.listCategoryProduct = listCategoryVm;
 
