@@ -2936,4 +2936,12 @@ h1, h2, h3, h4, h5, h6, figure {
     background-color: #fff;
 }
 
+@media screen and (max-width: 992px) {
+    .hideShowSideBar {
+       display:none;
+    }
+}
+
+
+
 
