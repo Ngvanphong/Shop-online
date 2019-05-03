@@ -16,5 +16,7 @@ namespace ShopOnline.Web.Models
         public string Path { get; set; }
 
         public string Caption { get; set; }
+
+        public bool SwitchImage { get; set; }
     }
 }

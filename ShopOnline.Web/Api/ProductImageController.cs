@@ -30,7 +30,7 @@ namespace ShopOnline.Web.Api
         {
             return CreateHttpResponse(request, () =>
             {
-                IEnumerable<ProductImage> productImageDb = _productImageService.GetAll(productId);
+                IEnumerable<ProductImage> productImageDb = _productImageService.GetAllNotContent(productId);
                 IEnumerable<ProductImageViewModel> productImageVm = Mapper.Map<IEnumerable<ProductImageViewModel>>(productImageDb);
                 return request.CreateResponse(HttpStatusCode.OK, productImageVm);
             });
@@ -94,6 +94,18 @@ namespace ShopOnline.Web.Api
             string pathMap = HttpContext.Current.Server.MapPath(path);
             if (!string.IsNullOrEmpty(pathMap))
                 File.Delete(pathMap);
+        }
+
+        [HttpGet]
+        [Route("getallImageContent")]
+        public HttpResponseMessage GetIamgeContent(HttpRequestMessage request, int productId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+               
+                return request.CreateResponse(HttpStatusCode.OK, _productImageService.GetAll(productId));
+            });
+           
         }
     }
 }

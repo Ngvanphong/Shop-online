@@ -72,7 +72,7 @@ namespace ShopOnline.Web.Controllers
             
             IEnumerable<Product> listProductDb = _productService.GetProductRelate(productVm.CategoryID);
             IEnumerable<ProductViewModel> listProductVm = Mapper.Map<IEnumerable<ProductViewModel>>(listProductDb);
-            IEnumerable<ProductImage> listProductImageDb = _productImageService.GetProductImageByProdutID(id);
+            IEnumerable<ProductImage> listProductImageDb = _productImageService.GetProductImageByProdutIDNotContent(id);
             IEnumerable<ProductImageViewModel> listProductImageVm = Mapper.Map<IEnumerable<ProductImageViewModel>>(listProductImageDb);
             IEnumerable<Tag> listTagDb = _tagService.GetTagByProductId(id);
             IEnumerable<TagViewModel> listTagVm = Mapper.Map<IEnumerable<TagViewModel>>(listTagDb);

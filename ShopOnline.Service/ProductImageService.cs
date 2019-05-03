@@ -16,7 +16,9 @@ namespace ShopOnline.Service
         void Delete(int id);
         ProductImage GetByID(int id);
         List<ProductImage> GetProductImageByProdutID(int id);
+        List<ProductImage> GetProductImageByProdutIDNotContent(int id);
         IEnumerable<ProductImage> GetAll(int productId);
+        IEnumerable<ProductImage> GetAllNotContent(int productId);
 
         void Save();
     }
@@ -61,6 +63,16 @@ namespace ShopOnline.Service
         public void Save()
         {
             _unitOfWork.Commit();
+        }
+
+        public IEnumerable<ProductImage> GetAllNotContent(int productId)
+        {
+            return _productImageRepository.GetMulti(x => x.ProductId == productId&&x.SwitchImage==false);
+        }
+
+        public List<ProductImage> GetProductImageByProdutIDNotContent(int id)
+        {
+            return _productImageRepository.GetMulti(x => x.ProductId == id&&x.SwitchImage==false).ToList();
         }
     }
 }

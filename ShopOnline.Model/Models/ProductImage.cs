@@ -20,5 +20,7 @@ namespace ShopOnline.Model.Models
 
         [StringLength(250)]
         public string Caption { get; set; }
+
+        public bool SwitchImage { get; set; }
     }
 }

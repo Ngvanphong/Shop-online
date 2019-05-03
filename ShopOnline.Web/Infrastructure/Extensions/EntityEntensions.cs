@@ -170,6 +170,7 @@ namespace ShopOnline.Web.Infrastructure.Extensions
             image.ProductId = imageVm.ProductId;
             image.Path = imageVm.Path;
             image.Caption = imageVm.Caption;
+            image.SwitchImage = imageVm.SwitchImage;
         }
         
 
