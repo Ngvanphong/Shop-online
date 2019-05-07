@@ -3,7 +3,7 @@ namespace ShopOnline.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class changeProductImage : DbMigration
+    public partial class changeInit : DbMigration
     {
         public override void Up()
         {

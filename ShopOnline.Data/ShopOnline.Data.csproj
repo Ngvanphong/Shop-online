@@ -60,13 +60,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositotyBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201901240751275_initializer.cs" />
-    <Compile Include="Migrations\201901240751275_initializer.Designer.cs">
-      <DependentUpon>201901240751275_initializer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031030367_changeProductImage.cs" />
-    <Compile Include="Migrations\201905031030367_changeProductImage.Designer.cs">
-      <DependentUpon>201905031030367_changeProductImage.cs</DependentUpon>
+    <Compile Include="Migrations\201905070718053_changeInit.cs" />
+    <Compile Include="Migrations\201905070718053_changeInit.Designer.cs">
+      <DependentUpon>201905070718053_changeInit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,11 +107,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901240751275_initializer.resx">
-      <DependentUpon>201901240751275_initializer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031030367_changeProductImage.resx">
-      <DependentUpon>201905031030367_changeProductImage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905070718053_changeInit.resx">
+      <DependentUpon>201905070718053_changeInit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
